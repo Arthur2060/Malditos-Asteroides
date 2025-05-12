@@ -1,33 +1,39 @@
-# cornos_espacia
+# Malditos asteroides
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+Um mini jogo criado por mim usando os recursos da biblioteca libGdx em java,
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+# Objetivos
 
-## Platforms
+Este projeto tem como objetivo me aprimorar em:
+  <ul>
+    <li>Código java</li>
+    <li>Autonomia de estudos</li>
+    <li>Gradel</li>
+    <li>Git</li>
+  </ul>
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
+#Descrição
 
-## Gradle
+O jogo consiste em um loop de uma pequena nave viajando pelo espaço e desviando
+ou destruindo asteroides que ficam em seu caminho.
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+#Mecânicas atuais
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
+  <ul>
+    <li>Movimentação horizontal</li>
+    <li>Disparo de projéteis</li>
+    <li>Vida util de asteróides</li>
+  </ul>
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+#Mecânicas pretendidas
+
+Ainda pretendo adicionar alguns recursos para tornar o jogo um pouco mais interessante
+  <ul>
+    <li>Sistema de morte</li>
+    <li>Sistema de drop de itens e buffs</li>
+    <li>Tragetóras imprevisiveis de asteroides</li>
+  </ul>
+
+  Versão atual: 1.0.0
+
+  # Obrigado pela atenção se você leu até aqui!
