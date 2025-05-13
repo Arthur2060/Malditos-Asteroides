@@ -4,28 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Ator {
-    private Integer hp;
-    private Texture sprite;
-    private Float xPosition;
-    private Float yPosition;
-    private Float speed;
-    private SpriteBatch batch;
-
-    public Ator(Integer hp,
-                Texture sprite,
-                Float xPosition,
-                Float yPosition,
-                Float speed,
-                SpriteBatch batch
-    )
-    {
-        this.hp = hp;
-        this.sprite = sprite;
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.speed = speed;
-        this.batch = batch;
-    }
+    protected Integer hp;
+    protected Texture sprite;
+    protected Float xPosition;
+    protected Float yPosition;
+    protected Float speed;
+    protected SpriteBatch batch;
 
     public Ator() {
     }

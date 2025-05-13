@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.cornos_espaciais.entities.Asteroide;
+import io.github.cornos_espaciais.entities.Ator;
 import io.github.cornos_espaciais.entities.GerenciadorDeColisao;
 import io.github.cornos_espaciais.entities.Jogador;
 
@@ -22,7 +23,6 @@ public class Main extends ApplicationAdapter {
     private List<Asteroide> asteroides;
     private Integer SPAWN_TIME = 3;
     private Float timeLapsed;
-    private GerenciadorDeColisao col;
 
     @Override
     public void create() {
@@ -30,7 +30,6 @@ public class Main extends ApplicationAdapter {
         player = new Jogador(batch);
         asteroides = new ArrayList<>();
         timeLapsed = 0f;
-        col = new GerenciadorDeColisao(player, asteroides);
     }
 
     @Override
@@ -40,7 +39,6 @@ public class Main extends ApplicationAdapter {
 
         player.movimento(Gdx.graphics.getDeltaTime());
         player.render();
-        col.colisao();
         player.tiro();
 
         timeLapsed += Gdx.graphics.getDeltaTime();
@@ -62,9 +60,12 @@ public class Main extends ApplicationAdapter {
                 asteroide.dispose();
                 asteroideIterator.remove();
             }
+
+            if (GerenciadorDeColisao.colisaoEntreAtores(player, asteroide)) {
+                System.out.println("Colisão com player");
+                player.setHp(-1);
+            }
         }
-
-
 
         batch.end();
     }
