@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Jogador {
+public class Jogador extends Ator{
     private final Integer HP = 3;
     private final Texture SPRITE = new Texture("assets/jogador-spr.png");
     private final Float SPEED = 200f;
@@ -23,6 +23,7 @@ public class Jogador {
         this.batch = batch;
     }
 
+    @Override
     public void movimento(Float delta) {
         if (Gdx.input.isKeyPressed(Input.Keys.A) ||
             Gdx.input.isKeyPressed(Input.Keys.LEFT)) {

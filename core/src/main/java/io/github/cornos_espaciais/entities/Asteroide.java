@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
 
-public class Asteroide {
+public class Asteroide extends Ator{
     private Integer HP = 3;
     private final Texture[] POSSIVEISSPRITES = {
         new Texture("assets/asteroide-1.png"),
