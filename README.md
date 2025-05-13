@@ -12,7 +12,7 @@ Este projeto tem como objetivo me aprimorar em:
     <li>Git</li>
   </ul>
 
-#Descrição
+# Descrição
 
 O jogo consiste em um loop de uma pequena nave viajando pelo espaço e desviando
 ou destruindo asteroides que ficam em seu caminho.
@@ -25,7 +25,7 @@ ou destruindo asteroides que ficam em seu caminho.
     <li>Vida util de asteróides</li>
   </ul>
 
-#Mecânicas pretendidas
+# Mecânicas pretendidas
 
 Ainda pretendo adicionar alguns recursos para tornar o jogo um pouco mais interessante
   <ul>
