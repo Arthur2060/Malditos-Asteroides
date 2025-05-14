@@ -34,6 +34,4 @@ Ainda pretendo adicionar alguns recursos para tornar o jogo um pouco mais intere
     <li>Tragetóras imprevisiveis de asteroides</li>
   </ul>
 
-  Versão atual: 1.0.0
-
   # Obrigado pela atenção se você leu até aqui!
