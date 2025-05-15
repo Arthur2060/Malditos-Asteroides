@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Jogador extends Ator{
-    private final List<Projetil> PROJETEIS = new ArrayList<>();
+    private final List<Ator> PROJETEIS = new ArrayList<>();
 
     public Jogador(SpriteBatch batch) {
         setHp(3);
@@ -36,18 +36,22 @@ public class Jogador extends Ator{
 
     public void tiro() {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            PROJETEIS.add(new Projetil(getxPosition()));
+            PROJETEIS.add(new Projetil(getxPosition(), batch));
         }
 
-        Iterator<Projetil> projetilIterator = PROJETEIS.iterator();
+        Iterator<Ator> projetilIterator = PROJETEIS.iterator();
         while (projetilIterator.hasNext()) {
-            Projetil projetil = projetilIterator.next();
+            Ator projetil = projetilIterator.next();
             projetil.movimento(Gdx.graphics.getDeltaTime());
-            projetil.render(batch);
-            if (projetil.getY() > Gdx.graphics.getHeight()) {
+            projetil.render();
+            if (projetil.getyPosition() > Gdx.graphics.getHeight()) {
                 projetil.dispose();
                 projetilIterator.remove();
             }
         }
+    }
+
+    public List<Ator> getPROJETEIS() {
+        return PROJETEIS;
     }
 }

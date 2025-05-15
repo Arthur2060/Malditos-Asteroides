@@ -10,6 +10,7 @@ public abstract class Ator {
     protected Float yPosition;
     protected Float speed;
     protected SpriteBatch batch;
+    protected Boolean ativo = true;
 
     public Ator() {
     }
@@ -18,6 +19,11 @@ public abstract class Ator {
 
     public void render() {
         batch.draw(sprite, xPosition, yPosition);
+    }
+
+    public void dispose() {
+        sprite.dispose();
+        setAtivo(false);
     }
 
     public Integer getHp() {
@@ -66,5 +72,17 @@ public abstract class Ator {
 
     public void setBatch(SpriteBatch batch) {
         this.batch = batch;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public void dano() {
+        setHp(getHp() - 1);
     }
 }

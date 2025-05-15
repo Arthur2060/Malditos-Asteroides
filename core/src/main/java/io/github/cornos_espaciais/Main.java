@@ -20,8 +20,8 @@ public class Main extends ApplicationAdapter {
     private SpriteBatch batch;
     private Jogador player;
 
-    private List<Asteroide> asteroides;
-    private Integer SPAWN_TIME = 3;
+    private List<Ator> asteroides;
+    private Float            SPAWN_TIME = 1.5f;
     private Float timeLapsed;
 
     @Override
@@ -43,28 +43,35 @@ public class Main extends ApplicationAdapter {
 
         timeLapsed += Gdx.graphics.getDeltaTime();
         if (timeLapsed >= SPAWN_TIME) {
-            asteroides.add(new Asteroide());
+            asteroides.add(new Asteroide(batch));
             timeLapsed = 0f;
         }
 
-        for (Asteroide asteroide: asteroides) {
+        for (Ator asteroide: asteroides) {
             asteroide.movimento(Gdx.graphics.getDeltaTime());
-            asteroide.render(batch);
+            asteroide.render();
         }
 
-        Iterator<Asteroide> asteroideIterator = asteroides.iterator();
+        Iterator<Ator> asteroideIterator = asteroides.iterator();
         while (asteroideIterator.hasNext()) {
-            Asteroide asteroide = asteroideIterator.next();
-            if (asteroide.getY() <= (asteroide.getSprite().getHeight() * -1) ||
+            Ator asteroide = asteroideIterator.next();
+            if (asteroide.getyPosition() <= (asteroide.getSprite().getHeight() * -1) ||
             asteroide.getHp() <= 0) {
                 asteroide.dispose();
                 asteroideIterator.remove();
             }
 
-            if (GerenciadorDeColisao.colisaoEntreAtores(player, asteroide)) {
-                System.out.println("Colisão com player");
-                player.setHp(-1);
+            if (GerenciadorDeColisao.colisaoEntreAtorEProjetil(asteroide, player.getPROJETEIS())) {
+                asteroide.dano();
             }
+        }
+
+        if (GerenciadorDeColisao.colisaoEntreAtorEProjetil(player, asteroides)) {
+            player.dano();
+        }
+
+        if (player.getHp() <= 0) {
+            batch.end();
         }
 
         batch.end();

@@ -3,31 +3,29 @@ package io.github.cornos_espaciais.entities;
 import java.util.List;
 
 public class GerenciadorDeColisao {
-    public static boolean colisaoEntreAtores(Ator ator1, Ator ator2) {
-        Float[] alturaAtor1 = {
-            ator1.getyPosition() + (ator1.getSprite().getHeight() / 2),
-            ator1.getyPosition() - (ator1.getSprite().getHeight() / 2)
-        };
-        Float[] larguraAtor1 = {
-            ator1.getxPosition() + (ator1.getSprite().getWidth() / 2),
-            ator1.getxPosition() - (ator1.getSprite().getWidth() / 2)
-        };
+    private static Float[] coletarPosicoes(Ator ator) {
+        Float[] pontas = new Float[4];
 
-        Float[] alturaAtor2 = {
-            ator2.getyPosition() + (ator2.getSprite().getHeight() / 2),
-            ator2.getyPosition() - (ator2.getSprite().getHeight() / 2)
-        };
-        Float[] larguraAtor2 = {
-            ator2.getxPosition() + (ator2.getSprite().getWidth() / 2),
-            ator2.getxPosition() - (ator2.getSprite().getWidth() / 2)
-        };
+        pontas[0] = ator.getxPosition() + (ator.getSprite().getWidth() / 2);    // Recupera a ponta direita
+        pontas[1] = ator.getxPosition() - (ator.getSprite().getWidth() / 2);    // Recupera a ponta esquerda
+        pontas[2] = ator.getyPosition() + (ator.getSprite().getHeight() / 2);   // Recupera a ponta superior
+        pontas[3] = ator.getyPosition() - (ator.getSprite().getHeight() / 2);   // Recupera a ponta inferior
 
-        if (alturaAtor1[1] <= alturaAtor2[1] && alturaAtor1[2] >= alturaAtor2[2] &&
-            larguraAtor1[1] <= larguraAtor2[1] && larguraAtor1[2] >= larguraAtor2[2]) {
-            System.out.println("Colisão entre atores detectada");
-            return true;
+        return pontas;
+    }
+
+    public static boolean colisaoEntreAtorEProjetil(Ator ator, List<Ator> projetil) {
+        Float[] pontasAtor = coletarPosicoes(ator);
+
+        for (Ator proj : projetil) {
+            Float[] pontasProjetil = coletarPosicoes(proj);
+            if (pontasAtor[0] >= pontasProjetil[1] && pontasAtor[1] <= pontasProjetil[0] &&
+                pontasAtor[2] >= pontasProjetil[3] && pontasAtor[3] <= pontasProjetil[2] &&
+                proj.getAtivo()) {
+                proj.dispose();
+                return true;
+            }
         }
-
         return false;
     }
 }
