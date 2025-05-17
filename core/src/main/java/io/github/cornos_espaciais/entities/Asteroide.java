@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Random;
 
 public class Asteroide extends Ator{
-    private final Texture[] POSSIVEISSPRITES = {
+    private static final Texture[] POSSIVEISSPRITES = {
         new Texture("assets/asteroide-1.png"),
         new Texture("assets/asteroide-2.png"),
         new Texture("assets/asteroide-3.png")
