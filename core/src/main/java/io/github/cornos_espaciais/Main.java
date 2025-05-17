@@ -61,12 +61,12 @@ public class Main extends ApplicationAdapter {
                 asteroideIterator.remove();
             }
 
-            if (GerenciadorDeColisao.colisaoEntreAtorEProjetil(asteroide, player.getPROJETEIS())) {
+            if (GerenciadorDeColisao.colisaoEntreAtorEAtores(asteroide, player.getPROJETEIS())) {
                 asteroide.dano();
             }
         }
 
-        if (GerenciadorDeColisao.colisaoEntreAtorEProjetil(player, asteroides)) {
+        if (GerenciadorDeColisao.colisaoEntreAtorEAtores(player, asteroides)) {
             player.dano();
         }
 

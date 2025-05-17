@@ -1,5 +1,6 @@
 package io.github.cornos_espaciais.entities;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class GerenciadorDeColisao {
@@ -14,18 +15,28 @@ public class GerenciadorDeColisao {
         return pontas;
     }
 
-    public static boolean colisaoEntreAtorEProjetil(Ator ator, List<Ator> projetil) {
-        Float[] pontasAtor = coletarPosicoes(ator);
+    public static boolean colisaoEntreAtores(Ator ator1, Ator ator2) {
+        Float[] pontasAtor = coletarPosicoes(ator1);
+        Float[] pontasAtor2 = coletarPosicoes(ator2);
 
-        for (Ator proj : projetil) {
-            Float[] pontasProjetil = coletarPosicoes(proj);
-            if (pontasAtor[0] >= pontasProjetil[1] && pontasAtor[1] <= pontasProjetil[0] &&
-                pontasAtor[2] >= pontasProjetil[3] && pontasAtor[3] <= pontasProjetil[2] &&
-                proj.getAtivo()) {
-                proj.dispose();
+        if (pontasAtor[0] >= pontasAtor2[1] && pontasAtor[1] <= pontasAtor2[0] &&
+            pontasAtor[2] >= pontasAtor2[3] && pontasAtor[3] <= pontasAtor2[2] &&
+            ator2.getAtivo()) {
+            ator2.dispose();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean colisaoEntreAtorEAtores(Ator ator, List<Ator> atores) {
+        Iterator<Ator> atoresIterator = atores.iterator();
+        while (atoresIterator.hasNext()) {
+            Ator next = atoresIterator.next();
+            if (colisaoEntreAtores(ator, next)) {
                 return true;
             }
         }
+
         return false;
     }
 }
