@@ -36,7 +36,22 @@ public class GerenciadorDeColisao {
                 return true;
             }
         }
+        return false;
+    }
 
+    public static boolean colisaoEntreTiposdeAtores(List<Ator> tipoA, List<Ator> tipoB) {
+        Iterator<Ator> tipoAiterator = tipoA.iterator();
+        Iterator<Ator> tipoBiterator = tipoB.iterator();
+
+        while (tipoAiterator.hasNext()) {
+            Ator sujeitoA = tipoAiterator.next();
+            while (tipoBiterator.hasNext()) {
+                Ator sujeitoB = tipoBiterator.next();
+                if (colisaoEntreAtores(sujeitoA, sujeitoB)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }
