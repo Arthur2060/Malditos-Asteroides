@@ -1,4 +1,4 @@
-package io.github.cornos_espaciais.entities;
+package io.github.malditos_asteroides.entities;
 
 import java.util.Iterator;
 import java.util.List;

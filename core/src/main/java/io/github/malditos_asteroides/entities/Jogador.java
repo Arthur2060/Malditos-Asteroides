@@ -1,4 +1,4 @@
-package io.github.cornos_espaciais.entities;
+package io.github.malditos_asteroides.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

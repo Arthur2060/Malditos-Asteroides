@@ -1,8 +1,8 @@
-package io.github.cornos_espaciais.lwjgl3;
+package io.github.malditos_asteroides.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import io.github.cornos_espaciais.Main;
+import io.github.malditos_asteroides.Main;
 
 public class Lwjgl3Launcher {
     public static void main(String[] args) {

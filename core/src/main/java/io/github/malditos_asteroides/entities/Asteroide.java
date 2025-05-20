@@ -1,4 +1,4 @@
-package io.github.cornos_espaciais.entities;
+package io.github.malditos_asteroides.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,12 +13,12 @@ public class Asteroide extends Ator{
         new Texture("assets/asteroide-3.png")
     };
 
-    public Asteroide(SpriteBatch batch) {
+    public Asteroide(SpriteBatch batch, float speed) {
         this.sprite = POSSIVEISSPRITES[new Random().nextInt(3)];
         this.xPosition = new Random().nextFloat() * (Gdx.graphics.getWidth());
         this.yPosition = (float) Gdx.graphics.getHeight();
         this.batch = batch;
-        this.speed = (new Random().nextFloat() * 100) + 10;
+        this.speed = speed;
         this.hp = 3;
     }
 

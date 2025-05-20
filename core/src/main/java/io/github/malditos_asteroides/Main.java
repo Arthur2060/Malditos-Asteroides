@@ -1,13 +1,13 @@
-package io.github.cornos_espaciais;
+package io.github.malditos_asteroides;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import io.github.cornos_espaciais.entities.Asteroide;
-import io.github.cornos_espaciais.entities.Ator;
-import io.github.cornos_espaciais.entities.GerenciadorDeColisao;
-import io.github.cornos_espaciais.entities.Jogador;
+import io.github.malditos_asteroides.entities.Asteroide;
+import io.github.malditos_asteroides.entities.Ator;
+import io.github.malditos_asteroides.entities.GerenciadorDeColisao;
+import io.github.malditos_asteroides.entities.Jogador;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,7 +40,6 @@ public class Main extends ApplicationAdapter {
 
         timeLapsed += Gdx.graphics.getDeltaTime();
         if (timeLapsed >= SPAWN_TIME) {
-            asteroides.add(new Asteroide(batch));
             timeLapsed = 0f;
         }
 
