@@ -1,4 +1,6 @@
-package io.github.malditos_asteroides.entities;
+package io.github.malditos_asteroides.entities.gerenciadores;
+
+import io.github.malditos_asteroides.entities.Ator;
 
 import java.util.Iterator;
 import java.util.List;

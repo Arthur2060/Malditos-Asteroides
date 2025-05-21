@@ -51,6 +51,12 @@ public class Jogador extends Ator{
         }
     }
 
+    public void update() {
+        movimento(Gdx.graphics.getDeltaTime());
+        render();
+        tiro();
+    }
+
     public List<Ator> getPROJETEIS() {
         return PROJETEIS;
     }
