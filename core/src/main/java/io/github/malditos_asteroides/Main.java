@@ -31,8 +31,7 @@ public class Main extends ApplicationAdapter {
         batch.begin();
 
         asteroide.update();
-
-        player.update();
+        player.update(Gdx.graphics.getDeltaTime());
 
         batch.end();
     }

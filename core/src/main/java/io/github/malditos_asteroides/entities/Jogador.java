@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.malditos_asteroides.entities.gerenciadores.GerenciadorDeColisao;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,6 +20,13 @@ public class Jogador extends Ator{
         setyPosition(100f);
         setSpeed(200f);
         this.batch = batch;
+    }
+
+    @Override
+    public void update(Float delta) {
+        movimento(delta);
+        tiro();
+        render();
     }
 
     @Override
@@ -49,12 +57,6 @@ public class Jogador extends Ator{
                 projetilIterator.remove();
             }
         }
-    }
-
-    public void update() {
-        movimento(Gdx.graphics.getDeltaTime());
-        render();
-        tiro();
     }
 
     public List<Ator> getPROJETEIS() {

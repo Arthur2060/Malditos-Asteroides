@@ -17,6 +17,8 @@ public abstract class Ator {
 
     public abstract void movimento(Float delta);
 
+    public abstract void update(Float delta);
+
     public void render() {
         batch.draw(sprite, xPosition, yPosition);
     }

@@ -2,7 +2,6 @@ package io.github.malditos_asteroides.entities.gerenciadores;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.github.malditos_asteroides.Main;
 import io.github.malditos_asteroides.entities.Asteroide;
 import io.github.malditos_asteroides.entities.Ator;
 import io.github.malditos_asteroides.entities.Jogador;
@@ -17,6 +16,7 @@ public class GerenciadorDeAsteroides {
     private float delay;
     private float asteroidSpeed;
     private final Jogador player;
+    private float timeLapsed;
 
     public GerenciadorDeAsteroides(float delay, float asteroidSpeed, SpriteBatch batch, Jogador player) {
         this.batch = batch;
@@ -28,7 +28,7 @@ public class GerenciadorDeAsteroides {
     public GerenciadorDeAsteroides(SpriteBatch batch, Jogador player) {
         this.batch = batch;
         delay = 3;
-        asteroidSpeed = 200;
+        asteroidSpeed = 10;
         this.player = player;
     }
 
@@ -40,35 +40,49 @@ public class GerenciadorDeAsteroides {
     }
 
     public void update() {
-        float timeLapsed = 0f;
+        spawn();
+        atualizarAsteroides();
+        atualizarColisao();
+    }
 
+    private void spawn() {
         timeLapsed += Gdx.graphics.getDeltaTime();
-        System.out.println(timeLapsed);
-        if (timeLapsed >= delay) {
-            timeLapsed = 0f;
+        if (timeLapsed > delay) {
+            asteroides.add(new Asteroide(
+                batch,
+                asteroidSpeed
+            ));
+            timeLapsed = 0;
         }
+    }
 
-        for (Ator asteroide: asteroides) {
+    private boolean atualizarAsteroides() {
+        for (Ator asteroide : asteroides) {
             asteroide.movimento(Gdx.graphics.getDeltaTime());
             asteroide.render();
         }
 
-        Iterator<Ator> asteroideIterator = asteroides.iterator();
-        while (asteroideIterator.hasNext()) {
-            Ator asteroide = asteroideIterator.next();
-            if (asteroide.getyPosition() <= (asteroide.getSprite().getHeight() * -1) ||
-                asteroide.getHp() <= 0) {
-                asteroide.dispose();
-                asteroideIterator.remove();
-            }
+        asteroides.removeIf(asteroide -> {
+            boolean foraDaTela = asteroide.getyPosition() <= asteroide.getSprite().getHeight() * -1;
+            boolean vidaVazia = asteroide.getHp() <= 0;
 
+            if (foraDaTela || vidaVazia) {
+                asteroide.dispose();
+                return true;
+            }
+            return false;
+        });
+        return false;
+    }
+
+    private void atualizarColisao() {
+        for (Ator asteroide : asteroides) {
             if (GerenciadorDeColisao.colisaoEntreAtorEAtores(asteroide, player.getPROJETEIS())) {
                 asteroide.dano();
             }
-        }
-
-        if (GerenciadorDeColisao.colisaoEntreAtorEAtores(player, asteroides)) {
-            player.dano();
+            if (GerenciadorDeColisao.colisaoEntreAtorEAtores(player, asteroides)) {
+                player.dano();
+            }
         }
     }
 

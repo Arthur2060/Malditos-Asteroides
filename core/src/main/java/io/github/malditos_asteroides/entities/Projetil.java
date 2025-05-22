@@ -14,6 +14,12 @@ public class Projetil extends Ator{
         this.batch = batch;
     }
 
+    @Override
+    public void update(Float delta) {
+        movimento(delta);
+        render();
+    }
+
     public void movimento(Float delta) {
         setyPosition(getyPosition() + speed * delta);
     }

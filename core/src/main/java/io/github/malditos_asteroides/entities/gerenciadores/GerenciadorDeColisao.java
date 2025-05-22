@@ -23,7 +23,7 @@ public class GerenciadorDeColisao {
 
         if (pontasAtor[0] >= pontasAtor2[1] && pontasAtor[1] <= pontasAtor2[0] &&
             pontasAtor[2] >= pontasAtor2[3] && pontasAtor[3] <= pontasAtor2[2] &&
-            ator2.getAtivo()) {
+            ator2.getAtivo() && ator1.getAtivo()) {
             ator2.dispose();
             return true;
         }

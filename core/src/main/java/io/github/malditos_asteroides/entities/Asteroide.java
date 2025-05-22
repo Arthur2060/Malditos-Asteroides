@@ -22,6 +22,12 @@ public class Asteroide extends Ator{
         this.hp = 3;
     }
 
+    @Override
+    public void update(Float delta) {
+        movimento(delta);
+        render();
+    }
+
     public void movimento(Float delta) {
         setyPosition(getyPosition() - speed * delta);
     }
