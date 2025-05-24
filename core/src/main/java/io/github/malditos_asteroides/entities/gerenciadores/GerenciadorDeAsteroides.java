@@ -48,15 +48,12 @@ public class GerenciadorDeAsteroides {
     private void spawn() {
         timeLapsed += Gdx.graphics.getDeltaTime();
         if (timeLapsed > delay) {
-            asteroides.add(new Asteroide(
-                batch,
-                asteroidSpeed
-            ));
+            gerarAsteroide();
             timeLapsed = 0;
         }
     }
 
-    private boolean atualizarAsteroides() {
+    private void atualizarAsteroides() {
         for (Ator asteroide : asteroides) {
             asteroide.movimento(Gdx.graphics.getDeltaTime());
             asteroide.render();
@@ -72,7 +69,6 @@ public class GerenciadorDeAsteroides {
             }
             return false;
         });
-        return false;
     }
 
     private void atualizarColisao() {

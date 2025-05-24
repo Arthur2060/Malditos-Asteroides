@@ -31,13 +31,19 @@ public class Jogador extends Ator{
 
     @Override
     public void movimento(Float delta) {
-        if (Gdx.input.isKeyPressed(Input.Keys.A) ||
-            Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        if (
+            Gdx.input.isKeyPressed(Input.Keys.A) ||
+            Gdx.input.isKeyPressed(Input.Keys.LEFT) &&
+            getxPosition() > 0
+        ) {
             setxPosition(getxPosition() - speed * delta);
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.D) ||
-            Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if (
+            Gdx.input.isKeyPressed(Input.Keys.D) ||
+            Gdx.input.isKeyPressed(Input.Keys.RIGHT) &&
+            getxPosition() < Gdx.graphics.getWidth() - getSprite().getWidth()
+        ) {
             setxPosition(getxPosition() + speed * delta);
         }
     }
