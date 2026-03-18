@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.entities.gerenciadores;
+package io.github.malditos_asteroides.managers;
 
 import io.github.malditos_asteroides.entities.Ator;
 

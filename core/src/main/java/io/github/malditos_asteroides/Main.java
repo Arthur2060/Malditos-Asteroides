@@ -5,20 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import io.github.malditos_asteroides.entities.Ator;
-import io.github.malditos_asteroides.entities.gerenciadores.GerenciadorDeAsteroides;
-import io.github.malditos_asteroides.entities.gerenciadores.GerenciadorDeColisao;
-import io.github.malditos_asteroides.entities.Jogador;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import io.github.malditos_asteroides.managers.GerenciadorDeAsteroides;
+import io.github.malditos_asteroides.entities.Player;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
     private FitViewport viewport;
 
-    private Jogador player;
+    private Player player;
     private GerenciadorDeAsteroides asteroide;
 
     @Override
@@ -26,7 +20,7 @@ public class Main extends ApplicationAdapter {
         spriteBatch = new SpriteBatch();
         viewport = new FitViewport(8, 5);
 
-        player = new Jogador(spriteBatch);
+        player = new Player(viewport.getScreenWidth() / 2, viewport.getScreenHeight() / 2);
         asteroide = new GerenciadorDeAsteroides(spriteBatch, player);
     }
 
@@ -57,7 +51,9 @@ public class Main extends ApplicationAdapter {
     }
 
     private void input() {
+        float delta = Gdx.graphics.getDeltaTime();
 
+        player.input(delta);
     }
 
     private void draw() {
@@ -66,13 +62,13 @@ public class Main extends ApplicationAdapter {
         spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
         spriteBatch.begin();
 
-
+        player.draw(spriteBatch);
 
         spriteBatch.end();
     }
 
     private void logic() {
         asteroide.update();
-        player.update(Gdx.graphics.getDeltaTime());
+        player.logic();
     }
 }

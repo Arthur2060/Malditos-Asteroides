@@ -1,13 +1,12 @@
-package io.github.malditos_asteroides.entities.gerenciadores;
+package io.github.malditos_asteroides.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.malditos_asteroides.entities.Asteroide;
 import io.github.malditos_asteroides.entities.Ator;
-import io.github.malditos_asteroides.entities.Jogador;
+import io.github.malditos_asteroides.entities.Player;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GerenciadorDeAsteroides {
@@ -15,17 +14,17 @@ public class GerenciadorDeAsteroides {
     private final SpriteBatch batch;
     private float delay;
     private float asteroidSpeed;
-    private final Jogador player;
+    private final Player player;
     private float timeLapsed;
 
-    public GerenciadorDeAsteroides(float delay, float asteroidSpeed, SpriteBatch batch, Jogador player) {
+    public GerenciadorDeAsteroides(float delay, float asteroidSpeed, SpriteBatch batch, Player player) {
         this.batch = batch;
         this.delay = delay;
         this.asteroidSpeed = asteroidSpeed;
         this.player = player;
     }
 
-    public GerenciadorDeAsteroides(SpriteBatch batch, Jogador player) {
+    public GerenciadorDeAsteroides(SpriteBatch batch, Player player) {
         this.batch = batch;
         delay = 3;
         asteroidSpeed = 10;
@@ -73,12 +72,6 @@ public class GerenciadorDeAsteroides {
 
     private void atualizarColisao() {
         for (Ator asteroide : asteroides) {
-            if (GerenciadorDeColisao.colisaoEntreAtorEAtores(asteroide, player.getPROJETEIS())) {
-                asteroide.dano();
-            }
-            if (GerenciadorDeColisao.colisaoEntreAtorEAtores(player, asteroides)) {
-                player.dano();
-            }
         }
     }
 
