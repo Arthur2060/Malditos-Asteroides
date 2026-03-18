@@ -5,16 +5,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.malditos_asteroides.entities.Player;
+import io.github.malditos_asteroides.managers.AsteroidManager;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
     private Player player;
+    private AsteroidManager asteroidManager;
 
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
 
         player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
+        asteroidManager = new AsteroidManager(spriteBatch);
     }
 
     @Override
@@ -23,10 +26,11 @@ public class Main extends ApplicationAdapter {
 
     @Override
     public void render() {
+        float delta = Gdx.graphics.getDeltaTime();
 
-        input();
+        input(delta);
         draw();
-        logic();
+        logic(delta);
     }
 
     @Override
@@ -42,8 +46,7 @@ public class Main extends ApplicationAdapter {
         spriteBatch.dispose();
     }
 
-    private void input() {
-        float delta = Gdx.graphics.getDeltaTime();
+    private void input(float delta) {
 
         player.input(delta);
     }
@@ -53,11 +56,13 @@ public class Main extends ApplicationAdapter {
         spriteBatch.begin();
 
         player.draw();
+        asteroidManager.draw();
 
         spriteBatch.end();
     }
 
-    private void logic() {
+    private void logic(float delta) {
         player.logic();
+        asteroidManager.logic(delta);
     }
 }

@@ -10,9 +10,9 @@ public class Player{
     private int hp = 3;
     private float speed = 200.0f;
 
-    private Texture sprite = new Texture("assets/jogador-spr.png");
-    private int[] position = {0, 0};
-    private SpriteBatch spriteBatch;
+    private final Texture sprite = new Texture("assets/jogador-spr.png");
+    private final int[] position = {0, 0};
+    private final SpriteBatch spriteBatch;
 
     public Player (int x, int y, SpriteBatch spriteBatch) {
         this.position[0] = x;
