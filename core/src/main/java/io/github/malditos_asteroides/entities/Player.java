@@ -8,47 +8,49 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player{
     private int hp = 3;
-    private float speed = 20.0f;
+    private float speed = 200.0f;
 
-    private Texture sprite;
+    private Texture sprite = new Texture("assets/jogador-spr.png");
     private int[] position = {0, 0};
+    private SpriteBatch spriteBatch;
 
-    public Player (int x, int y) {
+    public Player (int x, int y, SpriteBatch spriteBatch) {
         this.position[0] = x;
         this.position[1] = y;
+        this.spriteBatch = spriteBatch;
     }
 
-    public void draw(SpriteBatch spriteBatch) {
+    public void draw() {
         spriteBatch.draw(sprite, position[0], position[1]);
     }
 
     public void input(float delta) {
         if(
             Gdx.input.isKeyPressed(Input.Keys.W) ||
-            Gdx.input.isKeyPressed(Input.Keys.UP
-            )) {
-            position[1] = (int) (position[1] + speed * delta);
+            Gdx.input.isKeyPressed(Input.Keys.UP)
+        ) {
+            position[1] += (int) (speed * delta);
         }
 
         if(
             Gdx.input.isKeyPressed(Input.Keys.S) ||
-                Gdx.input.isKeyPressed(Input.Keys.DOWN
-                )) {
-            position[1] = (int) (position[1] - speed * delta);
-        }
-
-        if(
-            Gdx.input.isKeyPressed(Input.Keys.A) ||
-                Gdx.input.isKeyPressed(Input.Keys.LEFT
-                )) {
-            position[0] = (int) (position[0] - speed * delta);
+            Gdx.input.isKeyPressed(Input.Keys.DOWN)
+        ) {
+            position[1] -= (int) (speed * delta);
         }
 
         if(
             Gdx.input.isKeyPressed(Input.Keys.D) ||
-                Gdx.input.isKeyPressed(Input.Keys.RIGHT
-                )) {
-            position[0] = (int) (position[0] + speed * delta);
+            Gdx.input.isKeyPressed(Input.Keys.RIGHT)
+            ) {
+            position[0] += (int) (speed * delta);
+        }
+
+        if(
+            Gdx.input.isKeyPressed(Input.Keys.A) ||
+                Gdx.input.isKeyPressed(Input.Keys.LEFT)
+        ) {
+            position[0] -= (int) (speed * delta);
         }
     }
 
