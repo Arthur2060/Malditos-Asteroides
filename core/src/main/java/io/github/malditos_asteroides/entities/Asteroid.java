@@ -32,4 +32,8 @@ public class Asteroid{
     public int[] getPosition() {
         return position;
     }
+
+    public int getDimension() {
+        return sprite.getWidth();
+    }
 }

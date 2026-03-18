@@ -56,4 +56,17 @@ public class Player{
 
     public void logic() {
     }
+
+    public void dano() {
+        hp--;
+        System.out.printf("Dano, hp: %d\n", hp);
+    }
+
+    public int[] getPosition() {
+        return position;
+    }
+
+    public int getDimension() {
+        return sprite.getWidth();
+    }
 }

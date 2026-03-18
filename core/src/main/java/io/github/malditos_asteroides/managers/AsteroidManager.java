@@ -40,4 +40,8 @@ public class AsteroidManager {
             asteroid.getPosition()[0] > Gdx.graphics.getWidth()
         );
     }
+
+    public List<Asteroid> getAsteroids() {
+        return asteroids;
+    }
 }
