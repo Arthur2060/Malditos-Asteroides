@@ -1,6 +1,6 @@
 # Malditos asteroides
 
-Um mini jogo criado por mim usando os recursos da biblioteca libGdx em java,
+Um mini jogo criado por mim usando os recursos da biblioteca LibGDX em java.
 
 # Objetivos
 
@@ -8,6 +8,7 @@ Este projeto tem como objetivo me aprimorar em:
   <ul>
     <li>Código java</li>
     <li>Autonomia de estudos</li>
+    <li>Object Calistenics</li>
     <li>Gradel</li>
     <li>Git</li>
   </ul>
