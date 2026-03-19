@@ -43,6 +43,5 @@ public class Asteroid{
 
     public void damage() {
         hp--;
-        System.out.println("THAT`S A LOT OF DAMAGE!!!");
     }
 }
