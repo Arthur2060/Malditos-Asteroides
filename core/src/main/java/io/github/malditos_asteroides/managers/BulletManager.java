@@ -16,6 +16,8 @@ public class BulletManager {
     private float timeElapsed;
     private float delay = 5f;
 
+    private boolean active = false;
+
     public BulletManager(Player player, SpriteBatch spriteBatch) {
         this.player = player;
         this.spriteBatch = spriteBatch;
@@ -28,6 +30,10 @@ public class BulletManager {
     }
 
     public void input(float delta) {
+        if (!active) {
+            return;
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             bullets.add(new Bullet(player.getPosition(), spriteBatch));
         }
@@ -45,5 +51,9 @@ public class BulletManager {
 
     public List<Bullet> getBullets() {
         return bullets;
+    }
+
+    public void setActive(boolean state) {
+        active = state;
     }
 }

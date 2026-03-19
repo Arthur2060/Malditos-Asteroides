@@ -13,6 +13,8 @@ public class AsteroidManager {
     private float timelapsed;
     private float delay = 2f;
 
+    private boolean active = false;
+
     public AsteroidManager(SpriteBatch spriteBatch) {
         this.spriteBatch = spriteBatch;
     }
@@ -24,6 +26,9 @@ public class AsteroidManager {
     }
 
     public void logic(float delta) {
+        if (!active) {
+            return;
+        }
 
         spawn(delta);
 
@@ -53,5 +58,15 @@ public class AsteroidManager {
 
     public List<Asteroid> getAsteroids() {
         return asteroids;
+    }
+
+    public void setDelay(int newDelay) {
+        if (newDelay > 0) {
+            delay = newDelay;
+        }
+    }
+
+    public void setActive(boolean state) {
+        active = state;
     }
 }

@@ -49,7 +49,7 @@ public class CollisionManager {
                 player.getPosition(), player.getDimension(),
                 asteroid.getPosition(), asteroid.getDimension()
             )) {
-                player.dano();
+                player.damage();
             }
         }
     }

@@ -10,9 +10,11 @@ public class Player{
     private int hp = 3;
     private float speed = 200.0f;
 
-    private final Texture sprite = new Texture("assets/jogador-spr.png");
+    private Texture sprite = new Texture("assets/jogador-spr.png");
     private final int[] position = {0, 0};
     private final SpriteBatch spriteBatch;
+
+    private boolean active = false;
 
     public Player (int x, int y, SpriteBatch spriteBatch) {
         this.position[0] = x;
@@ -25,6 +27,10 @@ public class Player{
     }
 
     public void input(float delta) {
+        if (!active) {
+            return;
+        }
+
         if(
             Gdx.input.isKeyPressed(Input.Keys.W) ||
             Gdx.input.isKeyPressed(Input.Keys.UP)
@@ -57,7 +63,7 @@ public class Player{
     public void logic() {
     }
 
-    public void dano() {
+    public void damage() {
         hp--;
         System.out.printf("Dano, hp: %d\n", hp);
     }
@@ -68,5 +74,28 @@ public class Player{
 
     public int getDimension() {
         return sprite.getWidth();
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setSprite(Texture newSprite) {
+        sprite = newSprite;
+    }
+
+    public void setHp(int newHp) {
+        if (newHp > 0) {
+            hp = newHp;
+        }
+    }
+
+    public void setPosition(int[] newPosition) {
+        position[0] = newPosition[0];
+        position[1] = newPosition[1];
+    }
+
+    public void setActive(boolean state) {
+        active = state;
     }
 }

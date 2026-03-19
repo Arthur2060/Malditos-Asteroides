@@ -8,6 +8,7 @@ import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.managers.AsteroidManager;
 import io.github.malditos_asteroides.managers.BulletManager;
 import io.github.malditos_asteroides.managers.CollisionManager;
+import io.github.malditos_asteroides.managers.Maestro;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
@@ -17,6 +18,8 @@ public class Main extends ApplicationAdapter {
     private AsteroidManager asteroidManager;
     private CollisionManager collisionManager;
     private BulletManager bulletManager;
+
+    private Maestro maestro;
 
     @Override
     public void create() {
@@ -31,6 +34,10 @@ public class Main extends ApplicationAdapter {
             asteroidManager.getAsteroids(),
             bulletManager.getBullets()
         );
+
+        maestro = new Maestro(player, bulletManager, asteroidManager);
+
+        maestro.start();
     }
 
     @Override
@@ -77,6 +84,7 @@ public class Main extends ApplicationAdapter {
     }
 
     private void logic(float delta) {
+        maestro.logic(delta);
         player.logic();
         asteroidManager.logic(delta);
         bulletManager.logic(delta);
