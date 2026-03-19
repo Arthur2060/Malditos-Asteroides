@@ -3,21 +3,22 @@ package io.github.malditos_asteroides.entities;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Asteroid{
-    private int hp = 2;
-    private float speed = 100.0f;
+public class Bullet {
+    private final Texture sprite = new Texture("assets/projetil.png");
+    private float speed = 500.0f;
 
-    private final Texture sprite = new Texture("assets/asteroide-1.png");
-    private final int[] position = {0, 0};
+    private int[] position = {0, 0};
     private final SpriteBatch spriteBatch;
 
-    public Asteroid(SpriteBatch spriteBatch, int x, int y) {
+    public Bullet(int x, int y, SpriteBatch spriteBatch) {
         this.position[0] = x;
         this.position[1] = y;
         this.spriteBatch = spriteBatch;
     }
 
-    public Asteroid(SpriteBatch spriteBatch) {
+    public Bullet(int[] playerPosition, SpriteBatch spriteBatch) {
+        this.position[0] = playerPosition[0];
+        this.position[1] += playerPosition[1] + (sprite.getHeight() / 2);
         this.spriteBatch = spriteBatch;
     }
 
@@ -26,7 +27,7 @@ public class Asteroid{
     }
 
     public void logic(float delta) {
-        position[1] -= (int) (speed * delta);
+        position[1] += (int) (speed * delta);
     }
 
     public int[] getPosition() {
@@ -35,14 +36,5 @@ public class Asteroid{
 
     public int getDimension() {
         return sprite.getWidth();
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void damage() {
-        hp--;
-        System.out.println("THAT`S A LOT OF DAMAGE!!!");
     }
 }

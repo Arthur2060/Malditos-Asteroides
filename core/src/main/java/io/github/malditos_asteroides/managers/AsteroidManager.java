@@ -24,20 +24,30 @@ public class AsteroidManager {
     }
 
     public void logic(float delta) {
+
+        spawn(delta);
+
+        for (Asteroid asteroid : asteroids) {
+            asteroid.logic(delta);
+        }
+
+        checkAsteroids();
+    }
+
+    public void spawn(float delta) {
         timelapsed += delta;
 
         if (timelapsed > delay) {
             asteroids.add(new Asteroid(spriteBatch, (int) (Math.random() * (Gdx.graphics.getWidth() + 1)), Gdx.graphics.getHeight()));
             timelapsed = 0;
         }
+    }
 
-        for (Asteroid asteroid : asteroids) {
-            asteroid.logic(delta);
-        }
-
+    public void checkAsteroids() {
         asteroids.removeIf(asteroid ->
             asteroid.getPosition()[1] < 0 ||
-            asteroid.getPosition()[0] > Gdx.graphics.getWidth()
+                asteroid.getPosition()[0] > Gdx.graphics.getWidth() ||
+                asteroid.getHp() == 0
         );
     }
 

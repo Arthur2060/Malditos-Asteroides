@@ -6,21 +6,31 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.managers.AsteroidManager;
+import io.github.malditos_asteroides.managers.BulletManager;
 import io.github.malditos_asteroides.managers.CollisionManager;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
+
     private Player player;
+
     private AsteroidManager asteroidManager;
     private CollisionManager collisionManager;
+    private BulletManager bulletManager;
 
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
 
         player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
+
         asteroidManager = new AsteroidManager(spriteBatch);
-        collisionManager = new CollisionManager(player, asteroidManager.getAsteroids());
+        bulletManager = new BulletManager(player, spriteBatch);
+        collisionManager = new CollisionManager(
+            player,
+            asteroidManager.getAsteroids(),
+            bulletManager.getBullets()
+        );
     }
 
     @Override
@@ -51,6 +61,7 @@ public class Main extends ApplicationAdapter {
 
     private void input(float delta) {
 
+        bulletManager.input(delta);
         player.input(delta);
     }
 
@@ -60,6 +71,7 @@ public class Main extends ApplicationAdapter {
 
         player.draw();
         asteroidManager.draw();
+        bulletManager.draw();
 
         spriteBatch.end();
     }
@@ -67,6 +79,7 @@ public class Main extends ApplicationAdapter {
     private void logic(float delta) {
         player.logic();
         asteroidManager.logic(delta);
+        bulletManager.logic(delta);
         collisionManager.logic();
     }
 }
