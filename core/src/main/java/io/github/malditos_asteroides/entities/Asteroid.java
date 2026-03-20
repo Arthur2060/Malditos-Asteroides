@@ -7,7 +7,7 @@ public class Asteroid{
     private int hp = 2;
     private float speed = 100.0f;
 
-    private final Texture sprite = new Texture("assets/asteroide-1.png");
+    private final Texture sprite = new Texture("assets/sprites/staticSprites/asteroide-1.png");
     private final int[] position = {0, 0};
     private final SpriteBatch spriteBatch;
 

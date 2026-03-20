@@ -28,7 +28,7 @@ public class Maestro {
         if (!checkPlayer()) {
             gameOver(delta, player.getPosition());
         } else {
-            player.setSprite(new Texture("assets/jogador-spr.png"));
+            player.setSprite(new Texture("assets/sprites/staticSprites/jogador-spr.png"));
             checkAsteroidDestroyed();
         }
     }
@@ -56,7 +56,7 @@ public class Maestro {
         asteroidManager.getAsteroids().clear();
         bulletManager.getBullets().clear();
 
-        player.setSprite(new Texture("assets/explosion_spr.png"));
+        player.setSprite(new Texture("assets/sprites/staticSprites/explosion_spr.png"));
         player.setActive(false);
 
         System.out.println(timeElapsed);

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Bullet {
-    private final Texture sprite = new Texture("assets/projetil.png");
+    private final Texture sprite = new Texture("assets/sprites/staticSprites/projetil.png");
     private float speed = 500.0f;
 
     private int[] position = {0, 0};

@@ -10,7 +10,7 @@ public class Player{
     private int hp = 3;
     private float speed = 200.0f;
 
-    private Texture sprite = new Texture("assets/jogador-spr.png");
+    private Texture sprite = new Texture("assets/sprites/staticSprites/jogador-spr.png");
     private final int[] position = {0, 0};
     private final SpriteBatch spriteBatch;
 
