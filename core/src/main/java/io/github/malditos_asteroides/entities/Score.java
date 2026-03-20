@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 
 public class Score {
-    private int score = 0000;
+    private int score = 0;
 
     private final BitmapFont bitmapFont;
     private final SpriteBatch spriteBatch;
@@ -20,7 +20,7 @@ public class Score {
 
     public Score(SpriteBatch spriteBatch) {
         this.spriteBatch = spriteBatch;
-        this.bitmapFont = new BitmapFont();
+        this.bitmapFont = new BitmapFont(Gdx.files.internal("assets/fonts/Jersey.fnt"));
         bitmapFont.setColor(Color.WHITE);
     }
 
@@ -44,6 +44,6 @@ public class Score {
     }
 
     public void zeroScore() {
-        score = 0000;
+        score = 0;
     }
 }
