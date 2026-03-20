@@ -3,13 +3,13 @@ package io.github.malditos_asteroides.entities;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Asteroid{
-    private int hp = 2;
-    private float speed = 100.0f;
+public abstract class Asteroid{
+    protected int hp;
+    protected float speed;
 
-    private final Texture sprite = new Texture("assets/asteroide-1.png");
-    private final int[] position = {0, 0};
-    private final SpriteBatch spriteBatch;
+    protected final Texture sprite = new Texture("assets/asteroide-1.png");
+    protected final int[] position = {0, 0};
+    protected final SpriteBatch spriteBatch;
 
     public Asteroid(SpriteBatch spriteBatch, int x, int y) {
         this.position[0] = x;
