@@ -30,7 +30,7 @@ public class CollisionManager {
             for (Bullet bullet : bullets) {
                 if (collisionCheck(
                     asteroid.getPosition(), asteroid.getDimension(),
-                    bullet.getPosition()
+                    bullet.getPosition(), bullet.getDimension()
                 )) {
                     asteroid.damage();
                     targetId.add(bullets.indexOf(bullet));
@@ -47,7 +47,7 @@ public class CollisionManager {
         for (Asteroid asteroid : asteroids) {
             if (collisionCheck(
                 player.getPosition(), player.getDimension(),
-                asteroid.getPosition()
+                asteroid.getPosition(), asteroid.getDimension()
             )) {
                 player.damage(delta);
             }
@@ -56,14 +56,14 @@ public class CollisionManager {
 
     public boolean collisionCheck(
         int[] firstPosition, int firstDimension,
-        int[] secondPosition
+        int[] secondPosition, int secondDimension
     ) {
 
         int distance = (int) Math.sqrt(
             Math.pow(Math.abs(firstPosition[0] - secondPosition[0]), 2) +
                 Math.pow(Math.abs(firstPosition[1] - secondPosition[1]), 2)
-        );
+        ) - firstDimension / 2;
 
-        return (distance < firstDimension);
+        return (distance < secondDimension / 2);
     }
 }
