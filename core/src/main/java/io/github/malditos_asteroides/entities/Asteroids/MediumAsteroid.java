@@ -8,6 +8,7 @@ public class MediumAsteroid extends Asteroid {
         super(spriteBatch, x, y);
         hp = 5;
         speed = 250f;
+        points = 20;
     }
 
     public MediumAsteroid(SpriteBatch spriteBatch) {

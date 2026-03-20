@@ -9,6 +9,7 @@ public class BigAsteroid extends Asteroid {
         super(spriteBatch, x, y);
         hp = 10;
         speed = 100f;
+        points = 30;
     }
 
     public BigAsteroid(SpriteBatch spriteBatch) {
