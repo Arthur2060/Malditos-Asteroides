@@ -3,6 +3,9 @@ package io.github.malditos_asteroides.managers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import io.github.malditos_asteroides.entities.Asteroid;
+import io.github.malditos_asteroides.entities.Asteroids.BigAsteroid;
+import io.github.malditos_asteroides.entities.Asteroids.LittleAsteroid;
+import io.github.malditos_asteroides.entities.Asteroids.MediumAsteroid;
 import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.entities.Score;
 
@@ -68,6 +71,12 @@ public class Maestro {
     }
 
     public void checkAsteroidDestroyed() {
-        score.setScore(asteroidManager.getAsteroidsDestroyed().size());
+        int finalScore = 0;
+
+        for (Asteroid asteroid : asteroidManager.getAsteroidsDestroyed()) {
+            finalScore += asteroid.getPoints();
+        }
+
+        score.setScore(finalScore);
     }
 }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Asteroid{
     protected int hp;
     protected float speed;
+    protected int points;
 
     protected final Texture sprite = new Texture("assets/sprites/staticSprites/asteroide-1.png");
     protected final int[] position = {0, 0};
@@ -43,5 +44,9 @@ public abstract class Asteroid{
 
     public void damage() {
         hp--;
+    }
+
+    public int getPoints() {
+        return points;
     }
 }
