@@ -30,7 +30,7 @@ public class CollisionManager {
             for (Bullet bullet : bullets) {
                 if (collisionCheck(
                     asteroid.getPosition(), asteroid.getDimension(),
-                    bullet.getPosition(), bullet.getDimension()
+                    bullet.getPosition()
                 )) {
                     asteroid.damage();
                     targetId.add(bullets.indexOf(bullet));
@@ -47,7 +47,7 @@ public class CollisionManager {
         for (Asteroid asteroid : asteroids) {
             if (collisionCheck(
                 player.getPosition(), player.getDimension(),
-                asteroid.getPosition(), asteroid.getDimension()
+                asteroid.getPosition()
             )) {
                 player.damage();
             }
@@ -56,21 +56,14 @@ public class CollisionManager {
 
     public boolean collisionCheck(
         int[] firstPosition, int firstDimension,
-        int[] secondPosition, int secondDimension
+        int[] secondPosition
     ) {
-        if (
-            (firstPosition[0] - firstDimension) < secondPosition[0] &&
-            (firstPosition[0] + firstDimension) > secondPosition[0] &&
-            (firstPosition[1] - firstDimension) < secondPosition[1] &&
-            (firstPosition[1] + firstDimension) > secondPosition[1] &&
-            (secondPosition[0] - secondDimension) < firstPosition[0] &&
-            (secondPosition[0] + secondDimension) > firstPosition[0] &&
-            (secondPosition[1] - secondDimension) < firstPosition[1] &&
-            (secondPosition[1] + secondDimension) > firstPosition[1]
-        ) {
-            return true;
-        } else {
-            return false;
-        }
+
+        int distance = (int) Math.sqrt(
+            Math.pow(Math.abs(firstPosition[0] - secondPosition[0]), 2) +
+                Math.pow(Math.abs(firstPosition[1] - secondPosition[1]), 2)
+        );
+
+        return (distance < firstDimension);
     }
 }
