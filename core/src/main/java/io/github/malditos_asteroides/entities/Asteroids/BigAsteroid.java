@@ -19,4 +19,9 @@ public class BigAsteroid extends Asteroid {
     public void draw() {
         spriteBatch.draw(sprite, position[0], position[1], sprite.getWidth() * 3, sprite.getHeight() * 3);
     }
+
+    @Override
+    public int getDimension() {
+        return sprite.getWidth() * 3;
+    }
 }

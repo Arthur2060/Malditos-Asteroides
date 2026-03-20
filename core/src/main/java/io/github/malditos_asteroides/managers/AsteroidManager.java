@@ -15,7 +15,7 @@ public class AsteroidManager {
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
     private final SpriteBatch spriteBatch;
     private float timelapsed;
-    private float delay = 2f;
+    private float delay = 1f;
 
     private boolean active = false;
 
@@ -45,14 +45,19 @@ public class AsteroidManager {
 
     public void spawn(float delta) {
         timelapsed += delta;
-        double rng = Math.random() * 100;
-        int randomFloorPoint = (int) (Math.random() * (Gdx.graphics.getWidth() + 1));
 
         if (timelapsed > delay) {
             Asteroid newAsteroid;
-            if (rng < 5) {
+
+
+            double rng = Math.random() * 100;
+            int randomFloorPoint = (int) (Math.random() * (Gdx.graphics.getWidth() + 1));
+
+            System.out.println(rng);
+
+            if (rng < 50) {
                 newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
-            } else if (rng < 7) {
+            } else if (rng < 70) {
                 newAsteroid = new MediumAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
             } else {
                 newAsteroid = new BigAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());

@@ -18,4 +18,9 @@ public class MediumAsteroid extends Asteroid {
     public void draw() {
         spriteBatch.draw(sprite, position[0], position[1], sprite.getWidth() * 2, sprite.getHeight() * 2);
     }
+
+    @Override
+    public int getDimension() {
+        return sprite.getWidth() * 2;
+    }
 }
