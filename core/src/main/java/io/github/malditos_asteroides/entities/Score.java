@@ -25,16 +25,22 @@ public class Score {
     }
 
     public void draw() {
-        bitmapFont.draw(spriteBatch, Integer.toString(score), Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+        int screenHeigth = Gdx.graphics.getHeight();
+        int screenWidth = Gdx.graphics.getWidth();
+
+        bitmapFont.draw(
+            spriteBatch,
+            Integer.toString(score),
+            screenWidth - ((float) screenWidth / 10),
+            screenHeigth - ((float) screenHeigth / 10));
     }
 
     public int getScore() {
         return score;
     }
 
-    public void addScore(int value) {
-        score += value;
-        System.out.printf("Score: %d\n", score);
+    public void setScore(int value) {
+        score = value;
     }
 
     public void zeroScore() {

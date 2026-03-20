@@ -68,6 +68,6 @@ public class Maestro {
     }
 
     public void checkAsteroidDestroyed() {
-        score.addScore(10 * asteroidManager.getAsteroidsDestroyed().size());
+        score.setScore(asteroidManager.getAsteroidsDestroyed().size());
     }
 }
