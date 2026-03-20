@@ -53,8 +53,6 @@ public class AsteroidManager {
             double rng = Math.random() * 100;
             int randomFloorPoint = (int) (Math.random() * (Gdx.graphics.getWidth() + 1));
 
-            System.out.println(rng);
-
             if (rng < 50) {
                 newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
             } else if (rng < 70) {

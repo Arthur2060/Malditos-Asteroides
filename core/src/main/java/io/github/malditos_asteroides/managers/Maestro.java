@@ -27,6 +27,11 @@ public class Maestro {
         this.score = score;
     }
 
+    public void input(float delta) {
+        bulletManager.input(delta);
+        player.input(delta);
+    }
+
     public void logic(float delta) {
         if (!checkPlayer()) {
             gameOver(delta, player.getPosition());
@@ -34,6 +39,17 @@ public class Maestro {
             player.setSprite(new Texture("assets/sprites/staticSprites/jogador-spr.png"));
             checkAsteroidDestroyed();
         }
+
+        player.logic();
+        asteroidManager.logic(delta);
+        bulletManager.logic(delta);
+    }
+
+    public void draw() {
+        player.draw();
+        asteroidManager.draw();
+        bulletManager.draw();
+        score.draw();
     }
 
     public void start() {

@@ -71,28 +71,20 @@ public class Main extends ApplicationAdapter {
     }
 
     private void input(float delta) {
-
-        bulletManager.input(delta);
-        player.input(delta);
+        maestro.input(delta);
     }
 
     private void draw() {
         ScreenUtils.clear(0f, 0f, 0f, 1f);
         spriteBatch.begin();
 
-        player.draw();
-        asteroidManager.draw();
-        bulletManager.draw();
-        score.draw();
+        maestro.draw();
 
         spriteBatch.end();
     }
 
     private void logic(float delta) {
         maestro.logic(delta);
-        player.logic();
-        asteroidManager.logic(delta);
-        bulletManager.logic(delta);
-        collisionManager.logic();
+        collisionManager.logic(delta);
     }
 }

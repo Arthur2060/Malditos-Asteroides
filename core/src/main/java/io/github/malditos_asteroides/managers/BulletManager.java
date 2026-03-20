@@ -30,7 +30,7 @@ public class BulletManager {
     }
 
     public void input(float delta) {
-        if (!active) {
+        if (!player.getActive()) {
             return;
         }
 

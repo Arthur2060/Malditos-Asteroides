@@ -12,7 +12,11 @@ public class Player{
 
     private Texture sprite = new Texture("assets/sprites/staticSprites/jogador-spr.png");
     private final int[] position = {0, 0};
+
     private final SpriteBatch spriteBatch;
+    private float elapsedTime;
+
+    private float invincibleTime = 1.5f;
 
     private boolean active = false;
 
@@ -63,9 +67,13 @@ public class Player{
     public void logic() {
     }
 
-    public void damage() {
-        hp--;
-        System.out.printf("Dano, hp: %d\n", hp);
+    public void damage(float delta) {
+        elapsedTime += delta;
+        if (elapsedTime > invincibleTime) {
+            hp--;
+            System.out.printf("Damage! HP: %d\n", hp);
+            elapsedTime = 0;
+        }
     }
 
     public int[] getPosition() {
@@ -97,5 +105,9 @@ public class Player{
 
     public void setActive(boolean state) {
         active = state;
+    }
+
+    public boolean getActive() {
+        return active;
     }
 }

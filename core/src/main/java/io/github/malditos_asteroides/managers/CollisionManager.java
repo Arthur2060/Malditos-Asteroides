@@ -18,8 +18,8 @@ public class CollisionManager {
         this.bullets = bullets;
     }
 
-    public void logic() {
-        asteroidPlayerCollision();
+    public void logic(float delta) {
+        asteroidPlayerCollision(delta);
         asteroidBulletCollision();
     }
 
@@ -43,13 +43,13 @@ public class CollisionManager {
         }
     }
 
-    public void asteroidPlayerCollision() {
+    public void asteroidPlayerCollision(float delta) {
         for (Asteroid asteroid : asteroids) {
             if (collisionCheck(
                 player.getPosition(), player.getDimension(),
                 asteroid.getPosition()
             )) {
-                player.damage();
+                player.damage(delta);
             }
         }
     }
