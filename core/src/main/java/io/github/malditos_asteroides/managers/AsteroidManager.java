@@ -3,6 +3,9 @@ package io.github.malditos_asteroides.managers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.malditos_asteroides.entities.Asteroid;
+import io.github.malditos_asteroides.entities.Asteroids.BigAsteroid;
+import io.github.malditos_asteroides.entities.Asteroids.LittleAsteroid;
+import io.github.malditos_asteroides.entities.Asteroids.MediumAsteroid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +15,7 @@ public class AsteroidManager {
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
     private final SpriteBatch spriteBatch;
     private float timelapsed;
-    private float delay = 2f;
+    private float delay = 1f;
 
     private boolean active = false;
 
@@ -44,7 +47,23 @@ public class AsteroidManager {
         timelapsed += delta;
 
         if (timelapsed > delay) {
-            asteroids.add(new Asteroid(spriteBatch, (int) (Math.random() * (Gdx.graphics.getWidth() + 1)), Gdx.graphics.getHeight()));
+            Asteroid newAsteroid;
+
+
+            double rng = Math.random() * 100;
+            int randomFloorPoint = (int) (Math.random() * (Gdx.graphics.getWidth() + 1));
+
+            System.out.println(rng);
+
+            if (rng < 50) {
+                newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
+            } else if (rng < 70) {
+                newAsteroid = new MediumAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
+            } else {
+                newAsteroid = new BigAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
+            }
+
+            asteroids.add(newAsteroid);
             timelapsed = 0;
         }
     }
