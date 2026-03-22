@@ -2,6 +2,7 @@ package io.github.malditos_asteroides.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import io.github.malditos_asteroides.entities.Asteroid;
 import io.github.malditos_asteroides.entities.Asteroids.BigAsteroid;
 import io.github.malditos_asteroides.entities.Asteroids.LittleAsteroid;
@@ -15,7 +16,7 @@ public class AsteroidManager {
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
     private final SpriteBatch spriteBatch;
     private float timelapsed;
-    private float delay = 1f;
+    private float delay = 0.25f;
 
     private boolean active = false;
 
@@ -51,7 +52,7 @@ public class AsteroidManager {
 
 
             double rng = Math.random() * 100;
-            int randomFloorPoint = (int) (Math.random() * (Gdx.graphics.getWidth() + 1));
+            int randomFloorPoint = MathUtils.random(0, Gdx.graphics.getWidth() - 1);
 
             if (rng < 50) {
                 newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
@@ -68,7 +69,7 @@ public class AsteroidManager {
 
     public void checkAsteroids() {
         asteroids.removeIf(asteroid ->
-            asteroid.getPosition()[1] < 0 ||
+            asteroid.getPosition()[1] < -asteroid.getDimension() ||
                 asteroid.getPosition()[0] > Gdx.graphics.getWidth() ||
                 asteroidsDestroyed.contains(asteroid)
         );

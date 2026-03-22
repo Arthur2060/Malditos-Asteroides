@@ -16,9 +16,10 @@ public class Player{
     private final SpriteBatch spriteBatch;
     private float elapsedTime;
 
-    private float invincibleTime = 1.5f;
+    private float invincibleTime = 1.0f;
 
     private boolean active = false;
+    private boolean invincible = false;
 
     public Player (int x, int y, SpriteBatch spriteBatch) {
         this.position[0] = x;
@@ -64,14 +65,20 @@ public class Player{
         }
     }
 
-    public void logic() {
+    public void logic(float delta) {
+        if (invincible) {
+            elapsedTime += delta;
+
+            if (elapsedTime >= invincibleTime) {
+                invincible = false;
+            }
+        }
     }
 
-    public void damage(float delta) {
-        elapsedTime += delta;
-        if (elapsedTime > invincibleTime) {
+    public void damage() {
+        if (!invincible) {
             hp--;
-            System.out.printf("Damage! HP: %d\n", hp);
+            invincible = true;
             elapsedTime = 0;
         }
     }
