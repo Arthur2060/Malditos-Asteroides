@@ -77,6 +77,6 @@ public class Main extends ApplicationAdapter {
 
     private void logic(float delta) {
         maestro.logic(delta);
-        collisionManager.logic(delta);
+        collisionManager.logic();
     }
 }

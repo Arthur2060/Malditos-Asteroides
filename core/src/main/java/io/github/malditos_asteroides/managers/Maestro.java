@@ -40,7 +40,7 @@ public class Maestro {
             checkAsteroidDestroyed();
         }
 
-        player.logic();
+        player.logic(delta);
         asteroidManager.logic(delta);
         bulletManager.logic(delta);
     }
