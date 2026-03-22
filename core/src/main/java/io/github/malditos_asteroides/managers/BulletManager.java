@@ -53,6 +53,10 @@ public class BulletManager {
         return bullets;
     }
 
+    public void DeleteBullet(Bullet target) {
+        bullets.removeIf(bullet -> bullet == target);
+    }
+
     public void setActive(boolean state) {
         active = state;
     }

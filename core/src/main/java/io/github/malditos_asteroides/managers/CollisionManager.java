@@ -9,13 +9,13 @@ import java.util.List;
 
 public class CollisionManager {
     private Player player;
-    private List<Asteroid> asteroids;
-    private List<Bullet> bullets;
+    private AsteroidManager asteroidManager;
+    private BulletManager bulletManager;
 
-    public CollisionManager(Player player, List<Asteroid> asteroids, List<Bullet> bullets) {
-        this.asteroids = asteroids;
+    public CollisionManager(Player player, AsteroidManager asteroidManager, BulletManager bulletManager) {
+        this.asteroidManager = asteroidManager;
         this.player = player;
-        this.bullets = bullets;
+        this.bulletManager = bulletManager;
     }
 
     public void logic(float delta) {
@@ -24,27 +24,27 @@ public class CollisionManager {
     }
 
     public void asteroidBulletCollision() {
-        List<Integer> targetId = new ArrayList<>();
+        List<Bullet> targets = new ArrayList<>();
 
-        for (Asteroid asteroid : asteroids) {
-            for (Bullet bullet : bullets) {
+        for (Asteroid asteroid : asteroidManager.getAsteroids()) {
+            for (Bullet bullet : bulletManager.getBullets()) {
                 if (collisionCheck(
                     asteroid.getPosition(), asteroid.getDimension(),
                     bullet.getPosition(), bullet.getDimension()
                 )) {
                     asteroid.damage();
-                    targetId.add(bullets.indexOf(bullet));
+                    targets.add(bullet);
                 }
             }
         }
 
-        for (int id : targetId) {
-            bullets.remove(id);
+        for (Bullet target : targets) {
+            bulletManager.DeleteBullet(target);
         }
     }
 
     public void asteroidPlayerCollision(float delta) {
-        for (Asteroid asteroid : asteroids) {
+        for (Asteroid asteroid : asteroidManager.getAsteroids()) {
             if (collisionCheck(
                 player.getPosition(), player.getDimension(),
                 asteroid.getPosition(), asteroid.getDimension()

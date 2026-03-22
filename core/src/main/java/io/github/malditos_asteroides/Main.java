@@ -14,30 +14,22 @@ import io.github.malditos_asteroides.managers.Maestro;
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
 
-    private Player player;
-
-    private Score score;
-
-    private AsteroidManager asteroidManager;
     private CollisionManager collisionManager;
-    private BulletManager bulletManager;
-
     private Maestro maestro;
 
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
 
-        player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
-
-        asteroidManager = new AsteroidManager(spriteBatch);
-        bulletManager = new BulletManager(player, spriteBatch);
+        Player player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
+        AsteroidManager asteroidManager = new AsteroidManager(spriteBatch);
+        BulletManager bulletManager = new BulletManager(player, spriteBatch);
         collisionManager = new CollisionManager(
             player,
-            asteroidManager.getAsteroids(),
-            bulletManager.getBullets()
+            asteroidManager,
+            bulletManager
         );
-        score = new Score(spriteBatch);
+        Score score = new Score(spriteBatch);
 
         maestro = new Maestro(player, bulletManager, asteroidManager, score);
 
