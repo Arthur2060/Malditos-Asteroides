@@ -76,7 +76,6 @@ public class AsteroidManager {
         for (Asteroid asteroid : asteroids) {
             if (asteroid.getHp() <= 0) {
                 asteroidsDestroyed.add(asteroid);
-                System.out.println("THAT`S A LOT OF DAMAGE!!!");
             }
         }
     }
