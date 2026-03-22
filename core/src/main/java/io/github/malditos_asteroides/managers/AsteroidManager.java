@@ -15,8 +15,9 @@ public class AsteroidManager {
     private final List<Asteroid> asteroids = new ArrayList<>();
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
     private final SpriteBatch spriteBatch;
-    private float timelapsed;
-    private float delay = 0.25f;
+
+    private float elapsedTime;
+    private float delay = 0.10f;
 
     private boolean active = false;
 
@@ -31,11 +32,17 @@ public class AsteroidManager {
     }
 
     public void logic(float delta) {
+
+        elapsedTime += delta;
+
+        if (elapsedTime >= delay) {
+            spawn();
+            elapsedTime = 0;
+        }
+
         if (!active) {
             return;
         }
-
-        spawn(delta);
 
         for (Asteroid asteroid : asteroids) {
             asteroid.logic(delta);
@@ -44,27 +51,20 @@ public class AsteroidManager {
         checkAsteroids();
     }
 
-    public void spawn(float delta) {
-        timelapsed += delta;
+    public void spawn() {
+        double rng = Math.random() * 100;
+        int randomFloorPoint = MathUtils.random(0, Gdx.graphics.getWidth() - 1);
+        Asteroid newAsteroid;
 
-        if (timelapsed > delay) {
-            Asteroid newAsteroid;
-
-
-            double rng = Math.random() * 100;
-            int randomFloorPoint = MathUtils.random(0, Gdx.graphics.getWidth() - 1);
-
-            if (rng < 50) {
-                newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
-            } else if (rng < 70) {
-                newAsteroid = new MediumAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
-            } else {
-                newAsteroid = new BigAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
-            }
-
-            asteroids.add(newAsteroid);
-            timelapsed = 0;
+        if (rng < 50) {
+            newAsteroid = new LittleAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
+        } else if (rng < 70) {
+            newAsteroid = new MediumAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
+        } else {
+            newAsteroid = new BigAsteroid(spriteBatch, randomFloorPoint, Gdx.graphics.getHeight());
         }
+
+        asteroids.add(newAsteroid);
     }
 
     public void checkAsteroids() {
@@ -97,5 +97,10 @@ public class AsteroidManager {
 
     public List<Asteroid> getAsteroidsDestroyed() {
         return asteroidsDestroyed;
+    }
+
+    public void restart() {
+        asteroids.clear();
+        asteroidsDestroyed.clear();
     }
 }

@@ -60,4 +60,8 @@ public class BulletManager {
     public void setActive(boolean state) {
         active = state;
     }
+
+    public void restart() {
+        bullets.clear();
+    }
 }

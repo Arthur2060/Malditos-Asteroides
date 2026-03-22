@@ -72,17 +72,15 @@ public class Maestro {
     public void gameOver(float delta, int[] lastPlayerPosition) {
         timeElapsed += delta;
 
-        asteroidManager.getAsteroids().clear();
-        bulletManager.getBullets().clear();
+        asteroidManager.restart();
+        bulletManager.restart();
 
         player.setSprite(new Texture("assets/sprites/staticSprites/explosion_spr.png"));
         player.setActive(false);
 
-        System.out.println(timeElapsed);
-
-        if (timeElapsed > 1) {
-            timeElapsed = 0;
+        if (timeElapsed > 1.0f) {
             start();
+            timeElapsed = 0;
         }
     }
 
