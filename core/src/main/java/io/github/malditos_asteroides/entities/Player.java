@@ -117,4 +117,8 @@ public class Player{
     public boolean getActive() {
         return active;
     }
+
+    public boolean getInvincible() {
+        return invincible;
+    }
 }

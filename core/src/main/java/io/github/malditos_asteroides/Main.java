@@ -2,6 +2,7 @@ package io.github.malditos_asteroides;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.malditos_asteroides.entities.Player;
@@ -10,6 +11,8 @@ import io.github.malditos_asteroides.managers.AsteroidManager;
 import io.github.malditos_asteroides.managers.BulletManager;
 import io.github.malditos_asteroides.managers.CollisionManager;
 import io.github.malditos_asteroides.managers.Maestro;
+import io.github.malditos_asteroides.utils.animation.Animator;
+import io.github.malditos_asteroides.utils.animation.AnimiationCase;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
@@ -21,6 +24,7 @@ public class Main extends ApplicationAdapter {
     public void create() {
         spriteBatch = new SpriteBatch();
 
+        Animator animator = new Animator(spriteBatch);
         Player player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
         AsteroidManager asteroidManager = new AsteroidManager(spriteBatch);
         BulletManager bulletManager = new BulletManager(player, spriteBatch);
@@ -31,7 +35,12 @@ public class Main extends ApplicationAdapter {
         );
         Score score = new Score(spriteBatch);
 
-        maestro = new Maestro(player, bulletManager, asteroidManager, score);
+        maestro = new Maestro(
+            player,
+            bulletManager,
+            asteroidManager,
+            score,
+            animator);
 
         maestro.start();
     }
