@@ -98,7 +98,8 @@ public class Maestro {
         asteroidManager.restart();
         bulletManager.restart();
 
-        player.setSprite(new Texture("assets/sprites/staticSprites/explosion_spr.png"));
+        player.setSprite(null);
+        animator.animate(animations[1], player.getPosition(), true);
         player.setActive(false);
 
         if (timeElapsed > 1.0f) {
