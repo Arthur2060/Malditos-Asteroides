@@ -11,10 +11,6 @@ public class MediumAsteroid extends Asteroid {
         points = 20;
     }
 
-    public MediumAsteroid(SpriteBatch spriteBatch) {
-        super(spriteBatch);
-    }
-
     @Override
     public void draw() {
         spriteBatch.draw(sprite, position[0], position[1], sprite.getWidth() * 2, sprite.getHeight() * 2);

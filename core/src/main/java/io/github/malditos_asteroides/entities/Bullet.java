@@ -2,7 +2,11 @@ package io.github.malditos_asteroides.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@Getter
+@RequiredArgsConstructor
 public class Bullet {
     private final Texture sprite = new Texture("assets/sprites/staticSprites/projetil.png");
     private float speed = 500.0f;
@@ -28,10 +32,6 @@ public class Bullet {
 
     public void logic(float delta) {
         position[1] += (int) (speed * delta);
-    }
-
-    public int[] getPosition() {
-        return position;
     }
 
     public int getDimension() {

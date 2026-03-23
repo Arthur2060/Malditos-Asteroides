@@ -5,10 +5,12 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.malditos_asteroides.entities.Bullet;
 import io.github.malditos_asteroides.entities.Player;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class BulletManager {
     private final Player player;
     private List<Bullet> bullets = new ArrayList<>();
@@ -30,7 +32,7 @@ public class BulletManager {
     }
 
     public void input(float delta) {
-        if (!player.getActive()) {
+        if (!player.isActive()) {
             return;
         }
 
@@ -47,10 +49,6 @@ public class BulletManager {
         for (Bullet bullet : bullets) {
             bullet.logic(delta);
         }
-    }
-
-    public List<Bullet> getBullets() {
-        return bullets;
     }
 
     public void DeleteBullet(Bullet target) {

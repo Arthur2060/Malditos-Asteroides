@@ -84,7 +84,7 @@ public class Maestro {
     }
 
     public boolean checkPlayer() {
-        if (player.getInvincible() && player.getHp() > 0) {
+        if (player.isInvincible() && player.getHp() > 0) {
             player.setSprite(null);
             animator.animate(animations[0], player.getPosition(), true);
         }

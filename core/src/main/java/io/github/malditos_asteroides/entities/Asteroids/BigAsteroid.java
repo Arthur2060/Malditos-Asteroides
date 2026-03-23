@@ -12,10 +12,6 @@ public class BigAsteroid extends Asteroid {
         points = 30;
     }
 
-    public BigAsteroid(SpriteBatch spriteBatch) {
-        super(spriteBatch);
-    }
-
     @Override
     public void draw() {
         spriteBatch.draw(sprite, position[0], position[1], sprite.getWidth() * 3, sprite.getHeight() * 3);

@@ -7,10 +7,14 @@ import io.github.malditos_asteroides.entities.Asteroid;
 import io.github.malditos_asteroides.entities.Asteroids.BigAsteroid;
 import io.github.malditos_asteroides.entities.Asteroids.LittleAsteroid;
 import io.github.malditos_asteroides.entities.Asteroids.MediumAsteroid;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@RequiredArgsConstructor
 public class AsteroidManager {
     private final List<Asteroid> asteroids = new ArrayList<>();
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
@@ -20,10 +24,6 @@ public class AsteroidManager {
     private float delay = 0.10f;
 
     private boolean active = false;
-
-    public AsteroidManager(SpriteBatch spriteBatch) {
-        this.spriteBatch = spriteBatch;
-    }
 
     public void draw() {
         for (Asteroid asteroid : asteroids) {
@@ -80,10 +80,6 @@ public class AsteroidManager {
         }
     }
 
-    public List<Asteroid> getAsteroids() {
-        return asteroids;
-    }
-
     public void setDelay(int newDelay) {
         if (newDelay > 0) {
             delay = newDelay;
@@ -92,10 +88,6 @@ public class AsteroidManager {
 
     public void setActive(boolean state) {
         active = state;
-    }
-
-    public List<Asteroid> getAsteroidsDestroyed() {
-        return asteroidsDestroyed;
     }
 
     public void restart() {

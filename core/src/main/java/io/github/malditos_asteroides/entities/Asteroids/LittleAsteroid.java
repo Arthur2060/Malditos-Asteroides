@@ -10,8 +10,4 @@ public class LittleAsteroid extends Asteroid {
         speed = 200f;
         points = 10;
     }
-
-    public LittleAsteroid(SpriteBatch spriteBatch) {
-        super(spriteBatch);
-    }
 }

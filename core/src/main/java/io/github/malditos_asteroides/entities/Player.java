@@ -5,7 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Player{
     private int hp = 3;
     private float speed = 200.0f;
@@ -83,20 +90,8 @@ public class Player{
         }
     }
 
-    public int[] getPosition() {
-        return position;
-    }
-
     public int getDimension() {
         return sprite.getWidth();
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setSprite(Texture newSprite) {
-        sprite = newSprite;
     }
 
     public void setHp(int newHp) {
@@ -108,17 +103,5 @@ public class Player{
     public void setPosition(int[] newPosition) {
         position[0] = newPosition[0];
         position[1] = newPosition[1];
-    }
-
-    public void setActive(boolean state) {
-        active = state;
-    }
-
-    public boolean getActive() {
-        return active;
-    }
-
-    public boolean getInvincible() {
-        return invincible;
     }
 }

@@ -3,10 +3,14 @@ package io.github.malditos_asteroides.managers;
 import io.github.malditos_asteroides.entities.Asteroid;
 import io.github.malditos_asteroides.entities.Bullet;
 import io.github.malditos_asteroides.entities.Player;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@RequiredArgsConstructor
 public class CollisionManager {
     private Player player;
     private AsteroidManager asteroidManager;
