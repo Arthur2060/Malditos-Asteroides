@@ -3,7 +3,7 @@ package io.github.malditos_asteroides.managers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import io.github.malditos_asteroides.entities.Asteroid;
+import io.github.malditos_asteroides.entities.Asteroids.Asteroid;
 import io.github.malditos_asteroides.entities.Asteroids.BigAsteroid;
 import io.github.malditos_asteroides.entities.Asteroids.LittleAsteroid;
 import io.github.malditos_asteroides.entities.Asteroids.MediumAsteroid;

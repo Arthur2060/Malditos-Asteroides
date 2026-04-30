@@ -1,7 +1,6 @@
 package io.github.malditos_asteroides.entities.Asteroids;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.github.malditos_asteroides.entities.Asteroid;
 
 public class MediumAsteroid extends Asteroid {
     public MediumAsteroid(SpriteBatch spriteBatch, int x, int y) {

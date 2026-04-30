@@ -1,6 +1,6 @@
 package io.github.malditos_asteroides.managers;
 
-import io.github.malditos_asteroides.entities.Asteroid;
+import io.github.malditos_asteroides.entities.Asteroids.Asteroid;
 import io.github.malditos_asteroides.entities.Bullet;
 import io.github.malditos_asteroides.entities.Player;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.entities;
+package io.github.malditos_asteroides.entities.Asteroids;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

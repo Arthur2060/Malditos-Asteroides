@@ -2,7 +2,7 @@ package io.github.malditos_asteroides.managers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import io.github.malditos_asteroides.entities.Asteroid;
+import io.github.malditos_asteroides.entities.Asteroids.Asteroid;
 import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.entities.Score;
 import io.github.malditos_asteroides.utils.animation.Animator;
