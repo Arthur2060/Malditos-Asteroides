@@ -98,7 +98,6 @@ public class Engine {
         asteroidSystem.restart();
         bulletSystem.restart();
 
-        player.setSprite(null);
         animator.animate(animations[1], player.getPosition(), true);
         player.setActive(false);
 

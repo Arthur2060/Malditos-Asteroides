@@ -35,7 +35,9 @@ public class Player{
     }
 
     public void draw() {
-        spriteBatch.draw(sprite, position[0], position[1]);
+        if (active) {
+            spriteBatch.draw(sprite, position[0], position[1]);
+        }
     }
 
     public void input(float delta) {
