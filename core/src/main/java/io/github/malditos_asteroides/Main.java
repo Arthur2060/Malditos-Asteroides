@@ -2,23 +2,21 @@ package io.github.malditos_asteroides;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.entities.Score;
-import io.github.malditos_asteroides.managers.AsteroidManager;
-import io.github.malditos_asteroides.managers.BulletManager;
-import io.github.malditos_asteroides.managers.CollisionManager;
-import io.github.malditos_asteroides.managers.Maestro;
+import io.github.malditos_asteroides.systens.AsteroidSystem;
+import io.github.malditos_asteroides.systens.BulletSystem;
+import io.github.malditos_asteroides.systens.CollisionSystem;
+import io.github.malditos_asteroides.systens.Engine;
 import io.github.malditos_asteroides.utils.animation.Animator;
-import io.github.malditos_asteroides.utils.animation.AnimiationCase;
 
 public class Main extends ApplicationAdapter {
     private SpriteBatch spriteBatch;
 
-    private CollisionManager collisionManager;
-    private Maestro maestro;
+    private CollisionSystem collisionSystem;
+    private Engine engine;
 
     @Override
     public void create() {
@@ -26,23 +24,23 @@ public class Main extends ApplicationAdapter {
 
         Animator animator = new Animator(spriteBatch);
         Player player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
-        AsteroidManager asteroidManager = new AsteroidManager(spriteBatch);
-        BulletManager bulletManager = new BulletManager(player, spriteBatch);
-        collisionManager = new CollisionManager(
+        AsteroidSystem asteroidManager = new AsteroidSystem(spriteBatch);
+        BulletSystem bulletSystem = new BulletSystem(player, spriteBatch);
+        collisionSystem = new CollisionSystem(
             player,
             asteroidManager,
-            bulletManager
+            bulletSystem
         );
         Score score = new Score(spriteBatch);
 
-        maestro = new Maestro(
+        engine = new Engine(
             player,
-            bulletManager,
+            bulletSystem,
             asteroidManager,
             score,
             animator);
 
-        maestro.start();
+        engine.start();
     }
 
     @Override
@@ -72,20 +70,20 @@ public class Main extends ApplicationAdapter {
     }
 
     private void input(float delta) {
-        maestro.input(delta);
+        engine.input(delta);
     }
 
     private void draw() {
         ScreenUtils.clear(0f, 0f, 0f, 1f);
         spriteBatch.begin();
 
-        maestro.draw();
+        engine.draw();
 
         spriteBatch.end();
     }
 
     private void logic(float delta) {
-        maestro.logic(delta);
-        collisionManager.logic();
+        engine.logic(delta);
+        collisionSystem.logic();
     }
 }

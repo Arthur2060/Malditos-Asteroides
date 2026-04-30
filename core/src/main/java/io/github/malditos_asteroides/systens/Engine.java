@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.managers;
+package io.github.malditos_asteroides.systens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -8,10 +8,10 @@ import io.github.malditos_asteroides.entities.Score;
 import io.github.malditos_asteroides.utils.animation.Animator;
 import io.github.malditos_asteroides.utils.animation.AnimiationCase;
 
-public class Maestro {
+public class Engine {
     private final Player player;
-    private final BulletManager bulletManager;
-    private final AsteroidManager asteroidManager;
+    private final BulletSystem bulletSystem;
+    private final AsteroidSystem asteroidSystem;
     private final Score score;
     private final Animator animator;
 
@@ -30,21 +30,21 @@ public class Maestro {
 
     private float timeElapsed;
 
-    public Maestro(Player player,
-                   BulletManager bulletManager,
-                   AsteroidManager asteroidManager,
-                   Score score,
-                   Animator animator
+    public Engine(Player player,
+                  BulletSystem bulletSystem,
+                  AsteroidSystem asteroidSystem,
+                  Score score,
+                  Animator animator
     ) {
-        this.asteroidManager = asteroidManager;
-        this.bulletManager = bulletManager;
+        this.asteroidSystem = asteroidSystem;
+        this.bulletSystem = bulletSystem;
         this.player = player;
         this.score = score;
         this.animator = animator;
     }
 
     public void input(float delta) {
-        bulletManager.input(delta);
+        bulletSystem.input(delta);
         player.input(delta);
     }
 
@@ -57,15 +57,15 @@ public class Maestro {
         }
 
         player.logic(delta);
-        asteroidManager.logic(delta);
-        bulletManager.logic(delta);
+        asteroidSystem.logic(delta);
+        bulletSystem.logic(delta);
         animator.logic(delta);
     }
 
     public void draw() {
         player.draw();
-        asteroidManager.draw();
-        bulletManager.draw();
+        asteroidSystem.draw();
+        bulletSystem.draw();
         score.draw();
         animator.draw();
     }
@@ -75,10 +75,10 @@ public class Maestro {
         player.setHp(3);
         player.setActive(true);
 
-        asteroidManager.setDelay(2);
-        asteroidManager.setActive(true);
+        asteroidSystem.setDelay(2);
+        asteroidSystem.setActive(true);
 
-        bulletManager.setActive(true);
+        bulletSystem.setActive(true);
 
         score.zeroScore();
     }
@@ -95,8 +95,8 @@ public class Maestro {
     public void gameOver(float delta, int[] lastPlayerPosition) {
         timeElapsed += delta;
 
-        asteroidManager.restart();
-        bulletManager.restart();
+        asteroidSystem.restart();
+        bulletSystem.restart();
 
         player.setSprite(null);
         animator.animate(animations[1], player.getPosition(), true);
@@ -111,7 +111,7 @@ public class Maestro {
     public void checkAsteroidDestroyed() {
         int finalScore = 0;
 
-        for (Asteroid asteroid : asteroidManager.getAsteroidsDestroyed()) {
+        for (Asteroid asteroid : asteroidSystem.getAsteroidsDestroyed()) {
             animator.animate(animations[1], asteroid.getPosition(), false);
             finalScore += asteroid.getPoints();
         }

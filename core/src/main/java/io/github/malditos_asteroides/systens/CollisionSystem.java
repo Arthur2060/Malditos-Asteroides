@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.managers;
+package io.github.malditos_asteroides.systens;
 
 import io.github.malditos_asteroides.entities.Asteroids.Asteroid;
 import io.github.malditos_asteroides.entities.Bullet;
@@ -11,15 +11,15 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class CollisionManager {
+public class CollisionSystem {
     private Player player;
-    private AsteroidManager asteroidManager;
-    private BulletManager bulletManager;
+    private AsteroidSystem asteroidManager;
+    private BulletSystem bulletSystem;
 
-    public CollisionManager(Player player, AsteroidManager asteroidManager, BulletManager bulletManager) {
+    public CollisionSystem(Player player, AsteroidSystem asteroidManager, BulletSystem bulletSystem) {
         this.asteroidManager = asteroidManager;
         this.player = player;
-        this.bulletManager = bulletManager;
+        this.bulletSystem = bulletSystem;
     }
 
     public void logic() {
@@ -31,7 +31,7 @@ public class CollisionManager {
         List<Bullet> targets = new ArrayList<>();
 
         for (Asteroid asteroid : asteroidManager.getAsteroids()) {
-            for (Bullet bullet : bulletManager.getBullets()) {
+            for (Bullet bullet : bulletSystem.getBullets()) {
                 if (collisionCheck(
                     asteroid.getPosition(), asteroid.getDimension(),
                     bullet.getPosition(), bullet.getDimension()
@@ -43,7 +43,7 @@ public class CollisionManager {
         }
 
         for (Bullet target : targets) {
-            bulletManager.DeleteBullet(target);
+            bulletSystem.DeleteBullet(target);
         }
     }
 

@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.managers;
+package io.github.malditos_asteroides.systens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class AsteroidManager {
+public class AsteroidSystem {
     private final List<Asteroid> asteroids = new ArrayList<>();
     private final List<Asteroid> asteroidsDestroyed = new ArrayList<>();
     private final SpriteBatch spriteBatch;

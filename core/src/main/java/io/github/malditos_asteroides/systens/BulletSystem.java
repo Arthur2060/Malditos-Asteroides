@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.managers;
+package io.github.malditos_asteroides.systens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class BulletManager {
+public class BulletSystem {
     private final Player player;
     private List<Bullet> bullets = new ArrayList<>();
     private final SpriteBatch spriteBatch;
@@ -20,7 +20,7 @@ public class BulletManager {
 
     private boolean active = false;
 
-    public BulletManager(Player player, SpriteBatch spriteBatch) {
+    public BulletSystem(Player player, SpriteBatch spriteBatch) {
         this.player = player;
         this.spriteBatch = spriteBatch;
     }
