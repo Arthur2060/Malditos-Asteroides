@@ -24,7 +24,7 @@ public class Score {
 
     public Score(SpriteBatch spriteBatch) {
         this.spriteBatch = spriteBatch;
-        this.bitmapFont = new BitmapFont(Gdx.files.internal("assets/fonts/Jersey.fnt"));
+        this.bitmapFont = new BitmapFont(Gdx.files.internal("fonts/Jersey.fnt"));
         bitmapFont.setColor(Color.WHITE);
     }
 

@@ -17,12 +17,12 @@ public class Engine {
 
     private final AnimiationCase[] animations = new AnimiationCase[] {
         new AnimiationCase(
-            new Texture(Gdx.files.internal("assets/sprites/animations/player_invincible.png")),
+            new Texture(Gdx.files.internal("sprites/animations/player_invincible.png")),
             new int[]{2, 1},
             0.060f
         ),
         new AnimiationCase(
-            new Texture(Gdx.files.internal("assets/sprites/animations/explosion.png")),
+            new Texture(Gdx.files.internal("sprites/animations/explosion.png")),
             new int[]{3, 2},
             0.001f
         )
@@ -52,7 +52,7 @@ public class Engine {
         if (!checkPlayer()) {
             gameOver(delta, player.getPosition());
         } else {
-            player.setSprite(new Texture("assets/sprites/staticSprites/jogador-spr.png"));
+            player.setSprite(new Texture("sprites/staticSprites/jogador-spr.png"));
             checkAsteroidDestroyed();
         }
 

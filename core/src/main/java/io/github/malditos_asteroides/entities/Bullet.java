@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class Bullet {
-    private final Texture sprite = new Texture("assets/sprites/staticSprites/projetil.png");
+    private final Texture sprite = new Texture("sprites/staticSprites/projetil.png");
     private float speed = 500.0f;
 
     private int[] position = {0, 0};

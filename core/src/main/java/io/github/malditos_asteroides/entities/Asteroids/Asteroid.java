@@ -12,7 +12,7 @@ public abstract class Asteroid{
     protected float speed;
     protected int points;
 
-    protected final Texture sprite = new Texture("assets/sprites/staticSprites/asteroide-1.png");
+    protected final Texture sprite = new Texture("sprites/staticSprites/asteroide-1.png");
     protected final int[] position = {0, 0};
     protected final SpriteBatch spriteBatch;
 
