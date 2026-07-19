@@ -1,22 +1,18 @@
 package io.github.malditos_asteroides;
 
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.malditos_asteroides.entities.Player;
 import io.github.malditos_asteroides.entities.Score;
-import io.github.malditos_asteroides.systens.AsteroidSystem;
-import io.github.malditos_asteroides.systens.BulletSystem;
-import io.github.malditos_asteroides.systens.CollisionSystem;
-import io.github.malditos_asteroides.systens.Engine;
+import io.github.malditos_asteroides.systens.*;
 import io.github.malditos_asteroides.utils.animation.Animator;
 
 public class Main extends Game {
-    private SpriteBatch spriteBatch;
-    private PooledEngine pooledEngine;
+    public SpriteBatch spriteBatch;
+    public PooledEngine pooledEngine;
 
     private CollisionSystem collisionSystem;
     private Engine engine;
@@ -45,6 +41,8 @@ public class Main extends Game {
             animator);
 
         engine.start();
+
+        setScreen(new FirstScreen(this));
     }
 
     @Override
@@ -59,7 +57,7 @@ public class Main extends Game {
         draw();
         logic(delta);
 
-        pooledEngine.update(delta);
+        super.render();
     }
 
     @Override
