@@ -1,5 +1,6 @@
 package io.github.malditos_asteroides;
 
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -15,6 +16,7 @@ import io.github.malditos_asteroides.utils.animation.Animator;
 
 public class Main extends Game {
     private SpriteBatch spriteBatch;
+    private PooledEngine pooledEngine;
 
     private CollisionSystem collisionSystem;
     private Engine engine;
@@ -22,6 +24,7 @@ public class Main extends Game {
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
+        pooledEngine = new PooledEngine();
 
         Animator animator = new Animator(spriteBatch);
         Player player = new Player(Gdx.graphics.getWidth() / 2, 0, spriteBatch);
@@ -55,6 +58,8 @@ public class Main extends Game {
         input(delta);
         draw();
         logic(delta);
+
+        pooledEngine.update(delta);
     }
 
     @Override
