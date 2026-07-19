@@ -67,8 +67,6 @@ public class RenderSystem extends SortedIteratingSystem {
             rc.sprite.setRotation(tc.rotation);
 
             rc.sprite.draw(batch);
-
-            System.out.println("Drawed one entity!");
         }
 
         batch.end();
