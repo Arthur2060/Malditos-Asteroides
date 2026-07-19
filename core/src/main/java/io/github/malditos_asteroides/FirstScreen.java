@@ -23,20 +23,6 @@ public class FirstScreen implements Screen {
 
     @Override
     public void show() {
-        Entity debug = engine.createEntity();
-
-        TransformComponent tc = new TransformComponent();
-        RenderComponent rc = new RenderComponent();
-
-        tc.position.x = 5;
-        tc.position.y = 5;
-
-        debug
-            .add(tc)
-            .add(rc);
-
-        engine.addEntity(debug);
-
         engine.addSystem(new RenderSystem(spriteBatch));
     }
 
