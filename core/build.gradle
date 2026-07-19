@@ -4,6 +4,7 @@ eclipse.project.name = appName + '-core'
 dependencies {
   compileOnly("org.projectlombok:lombok:1.18.44")
   annotationProcessor("org.projectlombok:lombok:1.18.44")
+  api "com.badlogicgames.ashley:ashley:$ashleyVersion"
   api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
 
