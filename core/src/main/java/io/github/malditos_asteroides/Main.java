@@ -1,6 +1,7 @@
 package io.github.malditos_asteroides;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -12,7 +13,7 @@ import io.github.malditos_asteroides.systens.CollisionSystem;
 import io.github.malditos_asteroides.systens.Engine;
 import io.github.malditos_asteroides.utils.animation.Animator;
 
-public class Main extends ApplicationAdapter {
+public class Main extends Game {
     private SpriteBatch spriteBatch;
 
     private CollisionSystem collisionSystem;
