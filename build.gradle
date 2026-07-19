@@ -58,7 +58,7 @@ configure(subprojects) {
 
 subprojects {
   version = "$projectVersion"
-  ext.appName = 'cornos_espacia'
+  ext.appName = 'malditos-asteroides'
   repositories {
     mavenCentral()
     maven { url 'https://s01.oss.sonatype.org' }
@@ -70,4 +70,4 @@ subprojects {
   }
 }
 
-eclipse.project.name = 'cornos_espacia' + '-parent'
+eclipse.project.name = 'malditos-asteroides' + '-parent'
