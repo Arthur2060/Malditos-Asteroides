@@ -1,13 +1,10 @@
 package io.github.malditos_asteroides;
 
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.github.malditos_asteroides.components.RenderComponent;
-import io.github.malditos_asteroides.components.TransformComponent;
 import io.github.malditos_asteroides.systens.RenderSystem;
+import io.github.malditos_asteroides.systens.SpawnAsteroidSystem;
 
 public class FirstScreen implements Screen {
     private final Main parent;
@@ -24,6 +21,7 @@ public class FirstScreen implements Screen {
     @Override
     public void show() {
         engine.addSystem(new RenderSystem(spriteBatch));
+        engine.addSystem(new SpawnAsteroidSystem(1.0f));
     }
 
     @Override
