@@ -1,0 +1,68 @@
+package io.github.malditos_asteroides.factories;
+
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector3;
+import io.github.malditos_asteroides.components.AsteroidComponent;
+import io.github.malditos_asteroides.components.RenderComponent;
+import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.utils.AsteroidType;
+
+public class AsteroidFactory implements EntityFactory{
+
+    @Override
+    public Entity create(Engine engine, Vector3 position) {
+        Entity entity = engine.createEntity();
+
+        TransformComponent tc = new TransformComponent();
+        RenderComponent rc = new RenderComponent();
+        AsteroidComponent ac = new AsteroidComponent();
+
+        double rng = Math.random() * 100;
+
+        if (rng < 50) {
+            ac.type = AsteroidType.ONE;
+        } else if (rng < 70) {
+            ac.type = AsteroidType.TWO;
+        } else {
+            ac.type = AsteroidType.THREE;
+        }
+
+        switch (ac.type) {
+            case ONE:
+                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big1.png"));
+
+                tc.position.x = position.x;
+                tc.position.y = position.y;
+                tc.position.z = position.z;
+
+                tc.scale.x = 0.5f;
+                tc.scale.y = 0.5f;
+            case TWO:
+                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big2.png"));
+
+                tc.position.x = position.x;
+                tc.position.y = position.y;
+                tc.position.z = position.z;
+            case THREE:
+                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big3.png"));
+
+                tc.position.x = position.x;
+                tc.position.y = position.y;
+                tc.position.z = position.z;
+
+                tc.scale.x = 2;
+                tc.scale.y = 2;
+        }
+
+        entity
+            .add(tc)
+            .add(ac)
+            .add(rc);
+
+        engine.addEntity(entity);
+
+        return entity;
+    }
+}
