@@ -1,4 +1,4 @@
-package io.github.malditos_asteroides.systens.ECS;
+package io.github.malditos_asteroides.systens;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;

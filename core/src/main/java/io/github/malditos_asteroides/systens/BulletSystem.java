@@ -1,28 +1,26 @@
-package io.github.malditos_asteroides.systens.ECS;
+package io.github.malditos_asteroides.systens;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.Gdx;
 import io.github.malditos_asteroides.components.*;
 
-public class AsteroidSystem extends IteratingSystem {
+public class BulletSystem extends IteratingSystem {
 
     private final ComponentMapper<TransformComponent> tcMapper;
-    private final ComponentMapper<RenderComponent> rcMapper;
     private final ComponentMapper<CollisionComponent> ccMapper;
     private final ComponentMapper<LifeComponent> lcMapper;
 
-    public AsteroidSystem() {
+    public BulletSystem() {
         super(
             Family.all(
-                AsteroidComponent.class
+                BulletComponent.class
             ).get()
         );
 
         this.tcMapper = ComponentMapper.getFor(TransformComponent.class);
-        this.rcMapper = ComponentMapper.getFor(RenderComponent.class);
         this.ccMapper = ComponentMapper.getFor(CollisionComponent.class);
         this.lcMapper = ComponentMapper.getFor(LifeComponent.class);
     }
@@ -30,27 +28,22 @@ public class AsteroidSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         TransformComponent tc = tcMapper.get(entity);
-        RenderComponent rc = rcMapper.get(entity);
         CollisionComponent cc = ccMapper.get(entity);
-        LifeComponent lc = lcMapper.get(entity);
-
-        tc.rotation += 40f * deltaTime;
 
         if (
-            lc.hp <= 0 ||
-                tc.position.y < -(rc.sprite.getHeight() * tc.scale.y)
+            tc.position.y > Gdx.graphics.getHeight()
         ) {
             getEngine().removeEntity(entity);
         }
 
         for (Entity entity1 : cc.collidedWith) {
-            if (
-                entity1.getComponent(PlayerComponent.class) != null
-            ) {
+            if (entity1.getComponent(AsteroidComponent.class) != null) {
+                LifeComponent lcAsteroid = lcMapper.get(entity1);
+
+                lcAsteroid.hp--;
+
                 getEngine().removeEntity(entity);
             }
         }
-
-        cc.collidedWith.clear();
     }
 }

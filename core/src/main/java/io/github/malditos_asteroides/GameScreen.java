@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.factories.EntityFactory;
 import io.github.malditos_asteroides.factories.PlayerFactory;
-import io.github.malditos_asteroides.systens.ECS.*;
 
 public class GameScreen extends ScreenAdapter  {
     private SpriteBatch spriteBatch;
