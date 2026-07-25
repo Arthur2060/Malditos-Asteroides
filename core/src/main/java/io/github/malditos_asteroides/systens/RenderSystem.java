@@ -4,10 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.malditos_asteroides.components.RenderComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
 
@@ -21,10 +18,10 @@ public class RenderSystem extends SortedIteratingSystem {
     private final ComponentMapper<TransformComponent> tcMapper;
 
     private final SpriteBatch batch;
-    private final Viewport viewport;
-    private final OrthographicCamera camera;
 
     private final List<Entity> entities;
+
+    private final float PPM;
 
     public RenderSystem(SpriteBatch batch) {
         super(
@@ -39,11 +36,9 @@ public class RenderSystem extends SortedIteratingSystem {
         this.tcMapper = ComponentMapper.getFor(TransformComponent.class);
 
         this.batch = batch;
-        this.camera = new OrthographicCamera();
-        this.viewport = new FitViewport(10, 10, camera);
-
 
         this.entities = new ArrayList<Entity>();
+        this.PPM = 32;
     }
 
     @Override
