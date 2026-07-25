@@ -8,14 +8,14 @@ import com.badlogic.gdx.utils.Array;
 import io.github.malditos_asteroides.components.CollisionComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
 
-public class HitBoxSystem extends IteratingSystem {
+public class CollisionSystem extends IteratingSystem {
 
     private final ComponentMapper<TransformComponent> tcMapper;
     private final ComponentMapper<CollisionComponent> ccMapper;
 
     private final Array<Entity> entities;
 
-    public HitBoxSystem() {
+    public CollisionSystem() {
         super(
             Family.all(
                 CollisionComponent.class,

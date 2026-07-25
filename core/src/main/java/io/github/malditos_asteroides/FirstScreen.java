@@ -27,7 +27,7 @@ public class FirstScreen extends ScreenAdapter  {
         pooledEngine.addSystem(new MovementSystem());
         pooledEngine.addSystem(new KillAsteroidSystem());
         pooledEngine.addSystem(new PlayerControlSytem(player));
-        pooledEngine.addSystem(new HitBoxSystem());
+        pooledEngine.addSystem(new CollisionSystem());
     }
 
     @Override
