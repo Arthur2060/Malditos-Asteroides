@@ -11,4 +11,5 @@ public class PlayerComponent implements Component {
     public int right = Input.Keys.RIGHT;
     public int up = Input.Keys.UP;
     public int down = Input.Keys.DOWN;
+    public int fire = Input.Keys.J;
 }

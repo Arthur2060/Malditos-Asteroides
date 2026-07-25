@@ -7,6 +7,8 @@ import com.badlogic.gdx.Gdx;
 import io.github.malditos_asteroides.components.MovementComponent;
 import io.github.malditos_asteroides.components.PlayerComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.factories.BulletFactory;
+import io.github.malditos_asteroides.factories.EntityFactory;
 
 public class PlayerControlSytem extends EntitySystem {
 
@@ -14,6 +16,7 @@ public class PlayerControlSytem extends EntitySystem {
     private final ComponentMapper<MovementComponent> mcMapper;
     private final ComponentMapper<TransformComponent> tcMapper;
 
+    private final EntityFactory bulletFactory;
     private final Entity entity;
 
     public PlayerControlSytem(Entity entity) {
@@ -22,6 +25,8 @@ public class PlayerControlSytem extends EntitySystem {
         this.pcMapper = ComponentMapper.getFor(PlayerComponent.class);
         this.mcMapper = ComponentMapper.getFor(MovementComponent.class);
         this.tcMapper = ComponentMapper.getFor(TransformComponent.class);
+
+        this.bulletFactory = new BulletFactory();
     }
 
     @Override
@@ -46,6 +51,10 @@ public class PlayerControlSytem extends EntitySystem {
             mc.velocity.x = pc.speed;
         } else {
             mc.velocity.x = 0;
+        }
+
+        if (Gdx.input.isKeyJustPressed(pc.fire)) {
+            bulletFactory.create(getEngine(), tc.position);
         }
     }
 }
