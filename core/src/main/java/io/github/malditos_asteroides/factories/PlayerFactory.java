@@ -23,6 +23,10 @@ public class PlayerFactory implements EntityFactory{
 
         rc.sprite = new Sprite(new Texture("PNG/playerShip1_blue.png"));
 
+        tc.position.x = position.x;
+        tc.position.y = position.y;
+        tc.position.z = position.z;
+
         pc.hp = 3;
 
         entity

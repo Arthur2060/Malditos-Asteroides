@@ -2,6 +2,7 @@ package io.github.malditos_asteroides;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -19,7 +20,7 @@ public class FirstScreen extends ScreenAdapter  {
     public FirstScreen(Main parent) {
         this.spriteBatch = parent.spriteBatch;
         this.pooledEngine = new PooledEngine();
-        this.player = playerFactory.create(pooledEngine, new Vector3(1, 1, 0));
+        this.player = playerFactory.create(pooledEngine, new Vector3(Gdx.graphics.getWidth() / 2, 1, 0));
 
         pooledEngine.addSystem(new RenderSystem(spriteBatch));
         pooledEngine.addSystem(new SpawnAsteroidSystem(1f));
