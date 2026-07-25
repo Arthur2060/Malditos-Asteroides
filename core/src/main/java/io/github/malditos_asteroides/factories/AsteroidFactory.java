@@ -44,6 +44,7 @@ public class AsteroidFactory implements EntityFactory{
                 tc.scale.y = 0.5f;
 
                 mc.velocity.y = -200f;
+                break;
             case TWO:
                 rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big2.png"));
 
@@ -52,6 +53,7 @@ public class AsteroidFactory implements EntityFactory{
                 tc.position.z = position.z;
 
                 mc.velocity.y = -150f;
+                break;
             case THREE:
                 rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big3.png"));
 
@@ -63,6 +65,7 @@ public class AsteroidFactory implements EntityFactory{
                 tc.scale.y = 2;
 
                 mc.velocity.y = -100f;
+                break;
         }
 
         entity
