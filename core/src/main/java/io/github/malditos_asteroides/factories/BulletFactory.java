@@ -5,10 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
-import io.github.malditos_asteroides.components.CollisionComponent;
-import io.github.malditos_asteroides.components.MovementComponent;
-import io.github.malditos_asteroides.components.RenderComponent;
-import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.components.*;
 
 public class BulletFactory implements EntityFactory{
 
@@ -20,6 +17,7 @@ public class BulletFactory implements EntityFactory{
         RenderComponent rc = new RenderComponent();
         CollisionComponent cc = new CollisionComponent();
         MovementComponent mc = new MovementComponent();
+        BulletComponent bc = new BulletComponent();
 
         tc.position.y = position.y;
         tc.position.x = position.x;
@@ -33,6 +31,7 @@ public class BulletFactory implements EntityFactory{
         entity
             .add(tc)
             .add(rc)
+            .add(bc)
             .add(cc)
             .add(mc);
 
