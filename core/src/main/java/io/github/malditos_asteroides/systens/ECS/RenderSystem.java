@@ -58,6 +58,8 @@ public class RenderSystem extends SortedIteratingSystem {
 
             rc.sprite.setScale(tc.scale.x, tc.scale.y);
             rc.sprite.setPosition(tc.position.x, tc.position.y);
+            rc.sprite.setCenter(tc.position.x, tc.position.y);
+            rc.sprite.setOriginCenter();
             rc.sprite.setRotation(tc.rotation);
 
             rc.sprite.draw(batch);
