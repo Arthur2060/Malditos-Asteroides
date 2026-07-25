@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.components.AsteroidComponent;
+import io.github.malditos_asteroides.components.MovementComponent;
 import io.github.malditos_asteroides.components.RenderComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
 import io.github.malditos_asteroides.utils.AsteroidType;
@@ -19,6 +20,7 @@ public class AsteroidFactory implements EntityFactory{
         TransformComponent tc = new TransformComponent();
         RenderComponent rc = new RenderComponent();
         AsteroidComponent ac = new AsteroidComponent();
+        MovementComponent mc = new MovementComponent();
 
         double rng = Math.random() * 100;
 
@@ -40,12 +42,16 @@ public class AsteroidFactory implements EntityFactory{
 
                 tc.scale.x = 0.5f;
                 tc.scale.y = 0.5f;
+
+                mc.velocity.y = -200f;
             case TWO:
                 rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big2.png"));
 
                 tc.position.x = position.x;
                 tc.position.y = position.y;
                 tc.position.z = position.z;
+
+                mc.velocity.y = -150f;
             case THREE:
                 rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big3.png"));
 
@@ -55,11 +61,14 @@ public class AsteroidFactory implements EntityFactory{
 
                 tc.scale.x = 2;
                 tc.scale.y = 2;
+
+                mc.velocity.y = -100f;
         }
 
         entity
             .add(tc)
             .add(ac)
+            .add(mc)
             .add(rc);
 
         engine.addEntity(entity);
