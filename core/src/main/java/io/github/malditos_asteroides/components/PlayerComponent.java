@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.Input;
 
 public class PlayerComponent implements Component {
-    public int hp = 0;
     public float speed = 100f;
 
     public int left = Input.Keys.LEFT;

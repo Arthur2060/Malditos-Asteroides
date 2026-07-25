@@ -18,6 +18,7 @@ public class PlayerFactory implements EntityFactory{
         PlayerComponent pc = new PlayerComponent();
         MovementComponent mc = new MovementComponent();
         CollisionComponent cc = new CollisionComponent();
+        LifeComponent lc = new LifeComponent();
 
         rc.sprite = new Sprite(new Texture("PNG/playerShip1_blue.png"));
 
@@ -25,13 +26,14 @@ public class PlayerFactory implements EntityFactory{
         tc.position.y = position.y;
         tc.position.z = position.z;
 
-        pc.hp = 3;
+        lc.hp = 3;
 
         cc.hitbox.set(tc.position.x, tc.position.y, rc.sprite.getWidth(), rc.sprite.getHeight());
 
         entity
             .add(tc)
             .add(pc)
+            .add(lc)
             .add(cc)
             .add(rc)
             .add(mc);

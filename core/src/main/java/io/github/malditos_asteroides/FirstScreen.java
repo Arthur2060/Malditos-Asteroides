@@ -25,8 +25,8 @@ public class FirstScreen extends ScreenAdapter  {
         pooledEngine.addSystem(new RenderSystem(spriteBatch));
         pooledEngine.addSystem(new SpawnAsteroidSystem(1f));
         pooledEngine.addSystem(new MovementSystem());
-        pooledEngine.addSystem(new KillAsteroidSystem());
-        pooledEngine.addSystem(new PlayerControlSytem(player));
+        pooledEngine.addSystem(new AsteroidSystem());
+        pooledEngine.addSystem(new PlayerControlSystem(player));
         pooledEngine.addSystem(new CollisionSystem());
         pooledEngine.addSystem(new BulletSystem());
     }

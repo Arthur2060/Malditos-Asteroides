@@ -37,8 +37,6 @@ public class CollisionSystem extends IteratingSystem {
         cc.hitbox.y = tc.position.y;
         cc.hitbox.x = tc.position.x;
 
-        cc.collidedWith = null;
-
         entities.add(entity);
     }
 
@@ -56,7 +54,7 @@ public class CollisionSystem extends IteratingSystem {
                 CollisionComponent otherCc = ccMapper.get(otherEntity);
 
                 if (cc.hitbox.overlaps(otherCc.hitbox)) {
-                    cc.collidedWith = otherEntity;
+                    cc.collidedWith.add(otherEntity);
                 }
             }
         }

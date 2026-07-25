@@ -10,7 +10,7 @@ import io.github.malditos_asteroides.components.TransformComponent;
 import io.github.malditos_asteroides.factories.BulletFactory;
 import io.github.malditos_asteroides.factories.EntityFactory;
 
-public class PlayerControlSytem extends EntitySystem {
+public class PlayerControlSystem extends EntitySystem {
 
     private final ComponentMapper<PlayerComponent> pcMapper;
     private final ComponentMapper<MovementComponent> mcMapper;
@@ -19,7 +19,7 @@ public class PlayerControlSytem extends EntitySystem {
     private final EntityFactory bulletFactory;
     private final Entity entity;
 
-    public PlayerControlSytem(Entity entity) {
+    public PlayerControlSystem(Entity entity) {
         this.entity = entity;
 
         this.pcMapper = ComponentMapper.getFor(PlayerComponent.class);
