@@ -38,9 +38,9 @@ public class BulletSystem extends IteratingSystem {
 
         for (Entity entity1 : cc.collidedWith) {
             if (entity1.getComponent(AsteroidComponent.class) != null) {
-                LifeComponent lc = lcMapper.get(entity1);
+                LifeComponent lcAsteroid = lcMapper.get(entity1);
 
-                lc.hp--;
+                lcAsteroid.hp--;
 
                 getEngine().removeEntity(entity);
             }
