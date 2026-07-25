@@ -40,7 +40,7 @@ public class Main extends Game {
 
         engine.start();
 
-        setScreen(new FirstScreen(this));
+        setScreen(new GameScreen(this));
     }
 
     @Override

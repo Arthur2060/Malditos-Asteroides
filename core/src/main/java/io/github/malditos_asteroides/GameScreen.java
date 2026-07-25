@@ -10,14 +10,14 @@ import io.github.malditos_asteroides.factories.EntityFactory;
 import io.github.malditos_asteroides.factories.PlayerFactory;
 import io.github.malditos_asteroides.systens.ECS.*;
 
-public class FirstScreen extends ScreenAdapter  {
+public class GameScreen extends ScreenAdapter  {
     private SpriteBatch spriteBatch;
     private PooledEngine pooledEngine;
     private Entity player;
 
     private EntityFactory playerFactory = new PlayerFactory();
 
-    public FirstScreen(Main parent) {
+    public GameScreen(Main parent) {
         this.spriteBatch = parent.spriteBatch;
         this.pooledEngine = new PooledEngine();
         this.player = playerFactory.create(pooledEngine, new Vector3(Gdx.graphics.getWidth() / 2, 1, 0));
