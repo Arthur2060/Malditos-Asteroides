@@ -5,10 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
-import io.github.malditos_asteroides.components.AsteroidComponent;
-import io.github.malditos_asteroides.components.MovementComponent;
-import io.github.malditos_asteroides.components.RenderComponent;
-import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.components.*;
 import io.github.malditos_asteroides.utils.AsteroidType;
 
 public class AsteroidFactory implements EntityFactory{
@@ -21,6 +18,7 @@ public class AsteroidFactory implements EntityFactory{
         RenderComponent rc = new RenderComponent();
         AsteroidComponent ac = new AsteroidComponent();
         MovementComponent mc = new MovementComponent();
+        CollisionComponent cc = new CollisionComponent();
 
         double rng = Math.random() * 100;
 
@@ -68,9 +66,12 @@ public class AsteroidFactory implements EntityFactory{
                 break;
         }
 
+        cc.hitbox.set(tc.position.x, tc.position.y, rc.sprite.getWidth(), rc.sprite.getHeight());
+
         entity
             .add(tc)
             .add(ac)
+            .add(cc)
             .add(mc)
             .add(rc);
 

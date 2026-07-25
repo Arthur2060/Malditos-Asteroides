@@ -5,10 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
-import io.github.malditos_asteroides.components.MovementComponent;
-import io.github.malditos_asteroides.components.PlayerComponent;
-import io.github.malditos_asteroides.components.RenderComponent;
-import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.components.*;
 
 public class PlayerFactory implements EntityFactory{
 
@@ -20,6 +17,7 @@ public class PlayerFactory implements EntityFactory{
         RenderComponent rc = new RenderComponent();
         PlayerComponent pc = new PlayerComponent();
         MovementComponent mc = new MovementComponent();
+        CollisionComponent cc = new CollisionComponent();
 
         rc.sprite = new Sprite(new Texture("PNG/playerShip1_blue.png"));
 
@@ -29,9 +27,12 @@ public class PlayerFactory implements EntityFactory{
 
         pc.hp = 3;
 
+        cc.hitbox.set(tc.position.x, tc.position.y, rc.sprite.getWidth(), rc.sprite.getHeight());
+
         entity
             .add(tc)
             .add(pc)
+            .add(cc)
             .add(rc)
             .add(mc);
 

@@ -5,21 +5,20 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.utils.Array;
-import io.github.malditos_asteroides.components.AsteroidComponent;
 import io.github.malditos_asteroides.components.CollisionComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
 
-public class KillAsteroidSystem extends IteratingSystem {
+public class HitBoxSystem extends IteratingSystem {
 
     private final ComponentMapper<TransformComponent> tcMapper;
     private final ComponentMapper<CollisionComponent> ccMapper;
 
     private final Array<Entity> entities;
 
-    public KillAsteroidSystem() {
+    public HitBoxSystem() {
         super(
             Family.all(
-                AsteroidComponent.class,
+                CollisionComponent.class,
                 TransformComponent.class
             ).get()
         );
@@ -32,6 +31,14 @@ public class KillAsteroidSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+        TransformComponent tc = tcMapper.get(entity);
+        CollisionComponent cc = ccMapper.get(entity);
+
+        cc.hitbox.y = tc.position.y;
+        cc.hitbox.x = tc.position.x;
+
+        cc.collidedWith = null;
+
         entities.add(entity);
     }
 
@@ -40,14 +47,17 @@ public class KillAsteroidSystem extends IteratingSystem {
         super.update(deltaTime);
 
         for (Entity entity : entities) {
-            TransformComponent tc = tcMapper.get(entity);
             CollisionComponent cc = ccMapper.get(entity);
 
-            if (
-                tc.position.y < 0 ||
-                cc.collidedWith != null
-            ) {
-                getEngine().removeEntity(entity);
+            Array<Entity> otherEntities = new Array<>(entities);
+            otherEntities.removeIndex(entities.indexOf(entity, true));
+
+            for (Entity otherEntity : otherEntities) {
+                CollisionComponent otherCc = ccMapper.get(otherEntity);
+
+                if (cc.hitbox.overlaps(otherCc.hitbox)) {
+                    cc.collidedWith = otherEntity;
+                }
             }
         }
 
