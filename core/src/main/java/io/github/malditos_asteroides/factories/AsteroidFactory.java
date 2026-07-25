@@ -64,8 +64,8 @@ public class AsteroidFactory implements EntityFactory{
                 tc.position.y = position.y;
                 tc.position.z = position.z;
 
-                tc.scale.x = 2;
-                tc.scale.y = 2;
+                tc.scale.x = 1.5f;
+                tc.scale.y = 1.5f;
 
                 mc.velocity.y = -100f;
 

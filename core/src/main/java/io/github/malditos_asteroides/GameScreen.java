@@ -6,21 +6,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import io.github.malditos_asteroides.factories.EntityFactory;
-import io.github.malditos_asteroides.factories.PlayerFactory;
 import io.github.malditos_asteroides.systens.*;
 
 public class GameScreen extends ScreenAdapter  {
-    private SpriteBatch spriteBatch;
-    private PooledEngine pooledEngine;
-    private Entity player;
-
-    private EntityFactory playerFactory = new PlayerFactory();
+    private final SpriteBatch spriteBatch;
+    private final PooledEngine pooledEngine;
+    private final Entity player;
 
     public GameScreen(Main parent) {
         this.spriteBatch = parent.spriteBatch;
         this.pooledEngine = new PooledEngine();
-        this.player = playerFactory.create(pooledEngine, new Vector3(Gdx.graphics.getWidth() / 2, 1, 0));
+        this.player = parent.playerFactory.create(pooledEngine, new Vector3((float) Gdx.graphics.getWidth() / 2, 1, 0));
 
         pooledEngine.addSystem(new RenderSystem(spriteBatch));
         pooledEngine.addSystem(new SpawnAsteroidSystem(1f));

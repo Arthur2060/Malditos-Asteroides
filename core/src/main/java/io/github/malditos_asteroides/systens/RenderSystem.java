@@ -4,7 +4,9 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.malditos_asteroides.components.RenderComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
 
@@ -21,7 +23,7 @@ public class RenderSystem extends SortedIteratingSystem {
 
     private final List<Entity> entities;
 
-    private final float PPM;
+    public static final float PPM = 64;
 
     public RenderSystem(SpriteBatch batch) {
         super(
@@ -38,7 +40,6 @@ public class RenderSystem extends SortedIteratingSystem {
         this.batch = batch;
 
         this.entities = new ArrayList<Entity>();
-        this.PPM = 32;
     }
 
     @Override
@@ -57,10 +58,11 @@ public class RenderSystem extends SortedIteratingSystem {
             RenderComponent rc = rcMapper.get(entity);
 
             rc.sprite.setScale(tc.scale.x, tc.scale.y);
-            rc.sprite.setPosition(tc.position.x, tc.position.y);
+            rc.sprite.setRotation(tc.rotation);
+
             rc.sprite.setCenter(tc.position.x, tc.position.y);
             rc.sprite.setOriginCenter();
-            rc.sprite.setRotation(tc.rotation);
+            rc.sprite.setOriginBasedPosition(tc.position.x, tc.position.y);
 
             rc.sprite.draw(batch);
         }
