@@ -20,6 +20,6 @@ public class SpawnAsteroidSystem extends IntervalSystem {
     public void updateInterval() {
         int randomFloorPoint = MathUtils.random(0, Gdx.graphics.getWidth() - 1);
 
-        asteroidFactory.create(getEngine(), new Vector3(randomFloorPoint, Gdx.graphics.getHeight() / 2, 0));
+        asteroidFactory.create(getEngine(), new Vector3(randomFloorPoint, Gdx.graphics.getHeight(), 0));
     }
 }

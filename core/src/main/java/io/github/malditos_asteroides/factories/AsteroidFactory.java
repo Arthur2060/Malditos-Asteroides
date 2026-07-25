@@ -3,6 +3,7 @@ package io.github.malditos_asteroides.factories;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.components.AsteroidComponent;
 import io.github.malditos_asteroides.components.RenderComponent;
@@ -31,7 +32,7 @@ public class AsteroidFactory implements EntityFactory{
 
         switch (ac.type) {
             case ONE:
-                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big1.png"));
+                rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big1.png"));
 
                 tc.position.x = position.x;
                 tc.position.y = position.y;
@@ -40,13 +41,13 @@ public class AsteroidFactory implements EntityFactory{
                 tc.scale.x = 0.5f;
                 tc.scale.y = 0.5f;
             case TWO:
-                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big2.png"));
+                rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big2.png"));
 
                 tc.position.x = position.x;
                 tc.position.y = position.y;
                 tc.position.z = position.z;
             case THREE:
-                rc.texture = (new Texture("PNG/Meteors/meteorBrown_big3.png"));
+                rc.sprite = new Sprite(new Texture("PNG/Meteors/meteorBrown_big3.png"));
 
                 tc.position.x = position.x;
                 tc.position.y = position.y;
