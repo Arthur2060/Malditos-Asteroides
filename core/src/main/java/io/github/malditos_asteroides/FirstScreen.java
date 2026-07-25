@@ -1,19 +1,14 @@
 package io.github.malditos_asteroides;
 
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.github.malditos_asteroides.factories.AsteroidFactory;
 import io.github.malditos_asteroides.systens.RenderSystem;
 import io.github.malditos_asteroides.systens.SpawnAsteroidSystem;
 
 public class FirstScreen extends ScreenAdapter  {
     private SpriteBatch spriteBatch;
     private PooledEngine pooledEngine;
-
-    private final AsteroidFactory asteroidFactory = new AsteroidFactory();
 
     public FirstScreen(Main parent) {
         this.spriteBatch = parent.spriteBatch;
