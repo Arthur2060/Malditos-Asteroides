@@ -46,6 +46,8 @@ public class AsteroidSystem extends IteratingSystem {
             if (
                 entity1.getComponent(PlayerComponent.class) != null
             ) {
+                ScoreSystem.score -= 5;
+
                 getEngine().removeEntity(entity);
             }
         }
