@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.components.*;
+import io.github.malditos_asteroides.utils.Assets;
 
 public class BulletFactory implements EntityFactory{
 
@@ -22,7 +23,7 @@ public class BulletFactory implements EntityFactory{
         tc.position.y = position.y;
         tc.position.x = position.x;
 
-        rc.sprite = new Sprite(new Texture("PNG/Lasers/laserBlue01.png"));
+        rc.sprite = Assets.bullet;
 
         cc.hitbox.set(tc.position.x, tc.position.y, rc.sprite.getWidth(), rc.sprite.getHeight());
 

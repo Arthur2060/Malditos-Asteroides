@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.components.*;
+import io.github.malditos_asteroides.utils.Assets;
 
 public class PlayerFactory implements EntityFactory{
 
@@ -20,7 +21,7 @@ public class PlayerFactory implements EntityFactory{
         CollisionComponent cc = new CollisionComponent();
         LifeComponent lc = new LifeComponent();
 
-        rc.sprite = new Sprite(new Texture("PNG/playerShip1_blue.png"));
+        rc.sprite = Assets.player;
 
         tc.position.x = position.x;
         tc.position.y = position.y;

@@ -7,15 +7,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.malditos_asteroides.factories.EntityFactory;
 import io.github.malditos_asteroides.factories.PlayerFactory;
 import io.github.malditos_asteroides.systens.*;
+import io.github.malditos_asteroides.utils.Assets;
 
 public class Main extends Game {
     public SpriteBatch spriteBatch;
 
-    public final EntityFactory playerFactory = new PlayerFactory();
-
     @Override
     public void create() {
         spriteBatch = new SpriteBatch();
+        Assets.load();
 
         setScreen(new GameScreen(this));
     }

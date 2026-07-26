@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector3;
 import io.github.malditos_asteroides.components.MovementComponent;
 import io.github.malditos_asteroides.components.RenderComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
+import io.github.malditos_asteroides.utils.Assets;
 
 public class BackgroundFactory implements EntityFactory{
 
@@ -24,7 +25,7 @@ public class BackgroundFactory implements EntityFactory{
         tc.scale.x = 3.3f;
         tc.scale.y = 3.3f;
 
-        rc.sprite = new Sprite(new Texture("Backgrounds/black.png"));
+        rc.sprite = Assets.background;
 
         rc.sprite.setCenter(tc.position.x, tc.position.y);
         rc.sprite.setOriginCenter();
