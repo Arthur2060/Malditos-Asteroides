@@ -24,7 +24,7 @@ public class BackgroundFactory implements EntityFactory{
         tc.scale.x = 3.3f;
         tc.scale.y = 3.3f;
 
-        rc.sprite = new Sprite(new Texture("Backgrounds/darkPurple.png"));
+        rc.sprite = new Sprite(new Texture("Backgrounds/black.png"));
 
         rc.sprite.setCenter(tc.position.x, tc.position.y);
         rc.sprite.setOriginCenter();
