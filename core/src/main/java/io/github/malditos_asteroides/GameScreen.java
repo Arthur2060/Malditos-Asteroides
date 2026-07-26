@@ -21,6 +21,7 @@ public class GameScreen extends ScreenAdapter  {
         score = 0;
 
         pooledEngine.addSystem(new RenderSystem(spriteBatch));
+        pooledEngine.addSystem(new ScoreSystem(spriteBatch));
         pooledEngine.addSystem(new SpawnAsteroidSystem(1f));
         pooledEngine.addSystem(new MovementSystem());
         pooledEngine.addSystem(new AsteroidSystem());

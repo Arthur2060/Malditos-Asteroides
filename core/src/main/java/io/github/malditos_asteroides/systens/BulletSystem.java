@@ -42,8 +42,7 @@ public class BulletSystem extends IteratingSystem {
                 LifeComponent lcAsteroid = lcMapper.get(entity1);
 
                 if (lcAsteroid.hp == 1) {
-                    GameScreen.score += 10;
-                    System.out.println(GameScreen.score);
+                    ScoreSystem.score += 10;
                 }
                 lcAsteroid.hp--;
 
