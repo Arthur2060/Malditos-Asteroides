@@ -4,11 +4,11 @@ import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.Input;
 
 public class PlayerComponent implements Component {
-    public float speed = 100f;
+    public float speed = 200f;
 
-    public int left = Input.Keys.LEFT;
-    public int right = Input.Keys.RIGHT;
-    public int up = Input.Keys.UP;
-    public int down = Input.Keys.DOWN;
-    public int fire = Input.Keys.J;
+    public int left = Input.Keys.A;
+    public int right = Input.Keys.D;
+    public int up = Input.Keys.W;
+    public int down = Input.Keys.S;
+    public int fire = Input.Keys.SPACE;
 }

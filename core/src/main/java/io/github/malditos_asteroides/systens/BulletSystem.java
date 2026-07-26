@@ -5,6 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
+import io.github.malditos_asteroides.GameScreen;
 import io.github.malditos_asteroides.components.*;
 
 public class BulletSystem extends IteratingSystem {
@@ -40,6 +41,10 @@ public class BulletSystem extends IteratingSystem {
             if (entity1.getComponent(AsteroidComponent.class) != null) {
                 LifeComponent lcAsteroid = lcMapper.get(entity1);
 
+                if (lcAsteroid.hp == 1) {
+                    GameScreen.score += 10;
+                    System.out.println(GameScreen.score);
+                }
                 lcAsteroid.hp--;
 
                 getEngine().removeEntity(entity);

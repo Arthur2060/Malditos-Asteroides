@@ -26,6 +26,9 @@ public class PlayerFactory implements EntityFactory{
         tc.position.y = position.y;
         tc.position.z = position.z;
 
+        tc.scale.x = 0.5f;
+        tc.scale.y = 0.5f;
+
         lc.hp = 3;
 
         cc.hitbox.set(tc.position.x, tc.position.y, rc.sprite.getWidth(), rc.sprite.getHeight());
