@@ -17,7 +17,7 @@ public class GameScreen extends ScreenAdapter  {
     public GameScreen(Main parent) {
         this.spriteBatch = parent.spriteBatch;
         this.pooledEngine = new PooledEngine();
-        this.player = parent.playerFactory.create(pooledEngine, new Vector3((float) Gdx.graphics.getWidth() / 2, 1, 0));
+        this.player = parent.playerFactory.create(pooledEngine, new Vector3((float) Gdx.graphics.getWidth() / 2, 1, 10));
         score = 0;
 
         pooledEngine.addSystem(new RenderSystem(spriteBatch));
@@ -28,6 +28,7 @@ public class GameScreen extends ScreenAdapter  {
         pooledEngine.addSystem(new PlayerControlSystem(player));
         pooledEngine.addSystem(new CollisionSystem());
         pooledEngine.addSystem(new BulletSystem());
+        pooledEngine.addSystem(new BackgroundLoopSystem());
     }
 
     @Override

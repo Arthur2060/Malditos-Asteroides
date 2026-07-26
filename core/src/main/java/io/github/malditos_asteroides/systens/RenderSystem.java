@@ -4,15 +4,9 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.malditos_asteroides.components.RenderComponent;
 import io.github.malditos_asteroides.components.TransformComponent;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,8 +20,6 @@ public class RenderSystem extends SortedIteratingSystem {
     private final SpriteBatch batch;
 
     private final List<Entity> entities;
-
-    private final Sprite background = new Sprite(new Texture("Backgrounds/darkPurple.png"));
 
     public RenderSystem(SpriteBatch batch) {
         super(
@@ -56,16 +48,6 @@ public class RenderSystem extends SortedIteratingSystem {
         super.update(deltaTime);
 
         batch.begin();
-
-        background.setPosition(
-            (float) Gdx.graphics.getWidth() / 2,
-            (float) Gdx.graphics.getHeight() / 2
-        );
-        background.setCenter(background.getX(), background.getY());
-        background.setOriginCenter();
-        background.setScale(3.3f);
-
-        background.draw(batch);
 
         for (Entity entity : entities) {
             TransformComponent tc = tcMapper.get(entity);
